@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ic-stm32-decoder"
+version = "1.0.0"
+description = "Zero-dependency IC date code & lot marking decoder (YWW, YYWW, WWYY, YYMM, YYDDD Julian, onsemi AND8002/D, National Semi SNOA039C) and datasheet-backed STM32 part number decoder."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "PartVane Engineering", email = "sales@partvane.com" }
+]
+keywords = [
+  "ic-date-code",
+  "date-code-decoder",
+  "yyww",
+  "julian-date",
+  "onsemi",
+  "national-semiconductor",
+  "stm32",
+  "electronic-components",
+  "bom",
+  "iqc"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Manufacturing",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: JavaScript",
+  "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)"
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://www.partvane.com/tools/"
+"IC Date Code Decoder" = "https://www.partvane.com/tools/date-code-decoder/"
+"Manufacturer Date Code Formats" = "https://www.partvane.com/tools/date-code-formats/"
+"STM32 Part Number Decoder" = "https://www.partvane.com/tools/stm32-part-number-decoder/"
+
+[project.scripts]
+ic-stm32-decoder = "ic_stm32_decoder.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ic_stm32_decoder*"]

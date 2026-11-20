@@ -1,0 +1,50 @@
+{
+  "name": "ic-stm32-decoder",
+  "version": "1.0.0",
+  "description": "Zero-dependency IC date code & lot marking decoder (YWW, YYWW, WWYY, YYMM, YYDDD Julian, onsemi AND8002/D 12-year two-letter, National Semiconductor SNOA039C 6-week) and datasheet-backed STM32 ordering part number decoder.",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./date-code": "./src/date-code.js",
+    "./stm32": "./src/stm32.js"
+  },
+  "bin": {
+    "ic-stm32-decoder": "./bin/ic-stm32-decoder.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "ic_stm32_decoder/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/node.test.js",
+    "test:py": "python3 -m unittest discover -s tests -p 'test_*.py' -v",
+    "test:all": "node --test tests/node.test.js && python3 -m unittest discover -s tests -p 'test_*.py' -v"
+  },
+  "homepage": "https://www.partvane.com/tools/",
+  "keywords": [
+    "ic-date-code",
+    "date-code-decoder",
+    "yyww",
+    "wwyy",
+    "julian-date",
+    "onsemi",
+    "and8002",
+    "national-semiconductor",
+    "snoa039c",
+    "stm32",
+    "stm32-decoder",
+    "part-number-decoder",
+    "electronic-components",
+    "iqc",
+    "bom"
+  ],
+  "author": "PartVane Engineering <sales@partvane.com> (https://www.partvane.com)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
