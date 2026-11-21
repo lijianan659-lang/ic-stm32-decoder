@@ -37,6 +37,7 @@ dependencies = []
 
 [project.urls]
 Homepage = "https://www.partvane.com/tools/"
+Repository = "https://github.com/lijianan659-lang/ic-stm32-decoder"
 "IC Top Marking Lookup" = "https://www.partvane.com/tools/ic-marking-decoder/"
 "IC Date Code Decoder" = "https://www.partvane.com/tools/date-code-decoder/"
 "Manufacturer Date Code Formats" = "https://www.partvane.com/tools/date-code-formats/"

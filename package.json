@@ -50,5 +50,12 @@
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lijianan659-lang/ic-stm32-decoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lijianan659-lang/ic-stm32-decoder/issues"
   }
 }
