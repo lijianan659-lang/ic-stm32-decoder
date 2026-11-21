@@ -13,6 +13,7 @@ from .date_code import (
     decode_onsemi_two_letter,
 )
 from .stm32 import decode_stm32
+from .top_marking import lookup_top_marking
 
 HELP_TEXT = """ic-stm32-decoder — Zero-dependency IC Date Code & STM32 Part Number Decoder
 
@@ -22,6 +23,7 @@ Usage:
   python3 -m ic_stm32_decoder onsemi <2-letter-code> [--ref-year YYYY] [--json]
   python3 -m ic_stm32_decoder nsc <4-digit-code> [--century 2000|1900] [--ref-year YYYY] [--json]
   python3 -m ic_stm32_decoder stm32 <part-number> [--json]
+  python3 -m ic_stm32_decoder marking <top-mark-or-mpn> [--json]
 
 Examples:
   python3 -m ic_stm32_decoder 2243
@@ -32,6 +34,7 @@ Examples:
   python3 -m ic_stm32_decoder STM32G030F6P6TR
 
 Interactive Web Tools (No Sign-up):
+  IC Top Marking Lookup:    https://www.partvane.com/tools/ic-marking-decoder/
   IC Date Code Decoder:     https://www.partvane.com/tools/date-code-decoder/
   Marking Formats Guide:    https://www.partvane.com/tools/date-code-formats/
   STM32 Part Decoder:       https://www.partvane.com/tools/stm32-part-number-decoder/"""
@@ -74,9 +77,9 @@ def _parse_args(argv: list[str]) -> dict[str, Any]:
             positional.append(arg)
         i += 1
 
-    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc"):
+    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc", "marking"):
         opts["mode"] = positional[0].lower()
-        opts["target"] = "".join(positional[1:])
+        opts["target"] = " ".join(positional[1:]) if opts["mode"] == "marking" else "".join(positional[1:])
     elif len(positional) >= 1:
         opts["target"] = "".join(positional)
 
@@ -206,6 +209,20 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if opts["help"] else 1
 
     mode = _detect_mode(opts["target"]) if opts["mode"] == "auto" else opts["mode"]
+    if mode == "marking":
+        out = lookup_top_marking(opts["target"])
+        if opts["json"]:
+            print(json.dumps(out, indent=2, ensure_ascii=False))
+        elif not out["ok"]:
+            print(f"Input: {out['input']}\nStatus: NOT IN VERIFIED TABLE\nWeb Link: {out['shareUrl']}")
+        else:
+            print(f"Input: {out['input']}\nMatches: {len(out['matches'])}")
+            for m in out["matches"]:
+                print(f"  - [{m['mark']}] -> {m['mpn']} ({m['mfr']}, {m['pkg']})\n    Trap: {m['trap']}\n    Source: {m['src']} | {m['pageUrl']}")
+            if out["dateTokens"]:
+                print(f"Companion Date Token(s): {', '.join(out['dateTokens'])}")
+            print(f"Web Link: {out['shareUrl']}")
+        return 0 if out["ok"] else 1
     if mode == "stm32":
         out = decode_stm32(opts["target"])
         print(json.dumps(out, indent=2, ensure_ascii=False) if opts["json"] else _format_stm32_result(out))

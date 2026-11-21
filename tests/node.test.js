@@ -13,6 +13,7 @@ import {
   decodeOnsemiTwoLetter,
   decodeNationalSixWeek,
   decodeStm32,
+  lookupTopMarking,
 } from '../src/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -266,4 +267,20 @@ test('Node CLI handles JSON and text output with proper exit codes', () => {
   const invalidRun = spawnSync(process.execPath, [BIN_PATH, '24367'], { encoding: 'utf8' });
   assert.equal(invalidRun.status, 1);
   assert.match(invalidRun.stdout, /INVALID/);
+});
+
+
+test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion date tokens', () => {
+  const zakx = lookupTopMarking('ZAKX');
+  assert.equal(zakx.ok, true);
+  assert.equal(zakx.matches[0].mpn, 'TPL5010DDCR');
+
+  const multi = lookupTopMarking('PTSI 2418');
+  assert.equal(multi.ok, true);
+  assert.match(multi.matches[0].mpn, /TPS62130RGTR/);
+  assert.deepEqual(multi.dateTokens, ['2418']);
+
+  const wc = lookupTopMarking('AJ3K');
+  assert.equal(wc.ok, true);
+  assert.equal(wc.matches[0].mpn, 'MCP4725A0T-E/CH');
 });

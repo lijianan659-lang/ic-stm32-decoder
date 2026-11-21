@@ -18,3 +18,8 @@ export {
   cleanStm32Input,
   decodeStm32,
 } from './stm32.js';
+
+export {
+  VERIFIED_TOP_MARKINGS,
+  lookupTopMarking,
+} from './top-marking.js';

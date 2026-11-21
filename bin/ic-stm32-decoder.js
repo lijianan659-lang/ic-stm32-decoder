@@ -4,6 +4,7 @@ import {
   decodeOnsemiTwoLetter,
   decodeNationalSixWeek,
   decodeStm32,
+  lookupTopMarking,
 } from '../src/index.js';
 
 function printHelp() {
@@ -15,6 +16,7 @@ Usage:
   ic-stm32-decoder onsemi <2-letter-code> [--ref-year YYYY] [--json]
   ic-stm32-decoder nsc <4-digit-code> [--century 2000|1900] [--ref-year YYYY] [--json]
   ic-stm32-decoder stm32 <part-number> [--json]
+  ic-stm32-decoder marking <top-mark-or-mpn> [--json]
 
 Examples:
   ic-stm32-decoder 2243
@@ -25,6 +27,7 @@ Examples:
   ic-stm32-decoder STM32G030F6P6TR
 
 Interactive Web Tools (No Sign-up):
+  IC Top Marking Lookup:    https://www.partvane.com/tools/ic-marking-decoder/
   IC Date Code Decoder:     https://www.partvane.com/tools/date-code-decoder/
   Marking Formats Guide:    https://www.partvane.com/tools/date-code-formats/
   STM32 Part Decoder:       https://www.partvane.com/tools/stm32-part-number-decoder/`);
@@ -65,9 +68,9 @@ function parseArgs(argv) {
     }
   }
 
-  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc'].includes(positional[0].toLowerCase())) {
+  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc', 'marking'].includes(positional[0].toLowerCase())) {
     opts.mode = positional[0].toLowerCase();
-    opts.target = positional.slice(1).join('');
+    opts.target = opts.mode === 'marking' ? positional.slice(1).join(' ') : positional.slice(1).join('');
   } else if (positional.length >= 1) {
     opts.target = positional.join('');
   }
@@ -198,7 +201,22 @@ if (opts.help || !opts.target) {
 const mode = opts.mode === 'auto' ? detectMode(opts.target) : opts.mode;
 let output;
 
-if (mode === 'stm32') {
+if (mode === 'marking') {
+  output = lookupTopMarking(opts.target);
+  if (opts.json) {
+    console.log(JSON.stringify(output, null, 2));
+  } else if (!output.ok) {
+    console.log(`Input: ${output.input}\nStatus: NOT IN VERIFIED TABLE\nWeb Link: ${output.shareUrl}`);
+  } else {
+    console.log(`Input: ${output.input}\nMatches: ${output.matches.length}`);
+    for (const m of output.matches) {
+      console.log(`  - [${m.mark}] -> ${m.mpn} (${m.mfr}, ${m.pkg})\n    Trap: ${m.trap}\n    Source: ${m.src} | ${m.pageUrl}`);
+    }
+    if (output.dateTokens.length) console.log(`Companion Date Token(s): ${output.dateTokens.join(', ')}`);
+    console.log(`Web Link: ${output.shareUrl}`);
+  }
+  process.exit(output.ok ? 0 : 1);
+} else if (mode === 'stm32') {
   output = decodeStm32(opts.target);
   console.log(opts.json ? JSON.stringify(output, null, 2) : formatStm32Result(output));
   process.exit(output.ok && !output.err ? 0 : 1);

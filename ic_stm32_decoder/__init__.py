@@ -12,6 +12,7 @@ from .date_code import (
     iso_weeks_in_year,
     lookup_national_period,
 )
+from .top_marking import VERIFIED_TOP_MARKINGS, lookup_top_marking
 from .stm32 import (
     STM32_FAMILIES,
     STM32_GENERIC_TABLE,
@@ -20,7 +21,7 @@ from .stm32 import (
     decode_stm32,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 __all__ = [
     "__version__",
@@ -39,4 +40,6 @@ __all__ = [
     "STM32_PRODUCT_TYPES",
     "clean_stm32_input",
     "decode_stm32",
+    "VERIFIED_TOP_MARKINGS",
+    "lookup_top_marking",
 ]

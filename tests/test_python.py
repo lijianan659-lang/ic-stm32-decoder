@@ -17,6 +17,7 @@ from ic_stm32_decoder import (  # noqa: E402
     decode_national_six_week,
     decode_onsemi_two_letter,
     decode_stm32,
+    lookup_top_marking,
     iso_week_range,
     iso_weeks_in_year,
 )
@@ -169,6 +170,8 @@ class TestIcStm32Decoder(unittest.TestCase):
             ["date", "24366", "--ref-year", "2026", "--json"],
             ["onsemi", "GJ", "--ref-year", "2026", "--json"],
             ["nsc", "9948", "--century", "1900", "--ref-year", "2026", "--json"],
+            ["marking", "PTSI", "2418", "--json"],
+            ["marking", "AJ3K", "--json"],
         ]
         node_bin = ROOT / "bin" / "ic-stm32-decoder.js"
         for args in cases:

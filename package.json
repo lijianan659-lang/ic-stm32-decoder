@@ -1,13 +1,14 @@
 {
   "name": "ic-stm32-decoder",
-  "version": "1.0.0",
-  "description": "Zero-dependency IC date code & lot marking decoder (YWW, YYWW, WWYY, YYMM, YYDDD Julian, onsemi AND8002/D 12-year two-letter, National Semiconductor SNOA039C 6-week) and datasheet-backed STM32 ordering part number decoder.",
+  "version": "1.1.0",
+  "description": "Zero-dependency IC top marking & SMD code lookup, YYWW/Julian/onsemi/NSC date code decoder, and datasheet-backed STM32 part number decoder (Node.js ESM + Python 3).",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
     "./date-code": "./src/date-code.js",
-    "./stm32": "./src/stm32.js"
+    "./stm32": "./src/stm32.js",
+    "./top-marking": "./src/top-marking.js"
   },
   "bin": {
     "ic-stm32-decoder": "./bin/ic-stm32-decoder.js"
@@ -26,6 +27,9 @@
   },
   "homepage": "https://www.partvane.com/tools/",
   "keywords": [
+    "top-marking",
+    "smd-marking",
+    "ic-marking",
     "ic-date-code",
     "date-code-decoder",
     "yyww",
