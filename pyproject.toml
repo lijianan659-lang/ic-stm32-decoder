@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ic-stm32-decoder"
-version = "1.1.0"
+version = "1.2.0"
 description = "Zero-dependency IC date code & lot marking decoder (YWW, YYWW, WWYY, YYMM, YYDDD Julian, onsemi AND8002/D, National Semi SNOA039C) and datasheet-backed STM32 part number decoder."
 readme = "README.md"
 requires-python = ">=3.9"
