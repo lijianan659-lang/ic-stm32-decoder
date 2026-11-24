@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ic-stm32-decoder v1.3.0 — Open-Source IC Top Marking, Date Code &amp; STM32 Decoder</title>
+  <meta name="description" content="Zero-dependency JavaScript (ESM) and Python 3 toolkit for datasheet-verified IC top markings (144 SMD codes), YYWW/Julian/onsemi/NSC date codes, and STM32 ordering part numbers.">
+  <link rel="canonical" href="https://lijianan659-lang.github.io/ic-stm32-decoder/">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --panel: #13171d;
+      --border: #232a35;
+      --tx: #e6edf3;
+      --mu: #94a3b8;
+      --acc: #ff8a3d;
+      --ok: #3fb950;
+      --warn: #f59e0b;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0 28px;
+      background: radial-gradient(circle at 80% 0%, rgba(255,138,61,0.10), transparent 50%);
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: var(--mono);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--acc);
+      margin-right: 8px;
+    }
+    h1 { font-size: 30px; letter-spacing: -0.02em; margin: 12px 0 10px; line-height: 1.25; }
+    h2 { font-size: 21px; letter-spacing: -0.015em; margin: 34px 0 12px; }
+    h3 { font-size: 16px; margin: 0 0 8px; }
+    p.lead { color: var(--mu); font-size: 16px; max-width: 780px; margin: 0 0 18px; }
+    .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--mu); }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      background: #090b0e;
+      color: var(--tx);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 14px;
+    }
+    input:focus { outline: none; border-color: var(--acc); }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chips button {
+      background: #1a2029;
+      color: var(--tx);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .chips button:hover { border-color: var(--acc); }
+    .out {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #090b0e;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      min-height: 110px;
+    }
+    code, pre { font-family: var(--mono); }
+    pre {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--mu); font-weight: 600; background: var(--panel); }
+    footer {
+      margin-top: 48px;
+      padding: 24px 0 40px;
+      border-top: 1px solid var(--border);
+      color: var(--mu);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="badge">v1.3.0 MIT</span>
+      <span class="badge">0 Dependencies</span>
+      <span class="badge">Node.js ESM + Python 3</span>
+      <h1>ic-stm32-decoder — IC Top Marking, Date Code &amp; STM32 Ordering Toolkit</h1>
+      <p class="lead">
+        Open-source incoming quality control (IQC) and hardware engineering library for decoding cryptic SMD package markings (144 datasheet-verified entries), parallel ISO week / Julian / onsemi / National Semiconductor lot codes, and STM32 ordering suffixes.
+      </p>
+      <p style="margin:0;font-size:14px">
+        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder">GitHub Repository</a> &middot;
+        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder/releases/tag/v1.3.0">Release v1.3.0</a> &middot;
+        <a href="https://www.partvane.com/tools/">PartVane IC Engineering Tools Hub</a>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>Live Browser ES-Module Playground</h2>
+    <p style="color:var(--mu);margin-top:0;font-size:14px">Running <code>./src/index.js</code> directly in your browser with zero external libraries:</p>
+
+    <div class="grid3">
+      <div class="card">
+        <h3>1. IC Top Marking Lookup (144 Codes)</h3>
+        <label for="in-mark">Package Top Marking or MPN</label>
+        <input id="in-mark" value="PTSI 2418" autocomplete="off" spellcheck="false">
+        <div class="chips" data-target="in-mark">
+          <button type="button" data-v="ZAKX">ZAKX</button>
+          <button type="button" data-v="15OX">15OX</button>
+          <button type="button" data-v="5350MCQ">5350MCQ</button>
+          <button type="button" data-v="72630Q 2514">72630Q</button>
+          <button type="button" data-v="NV74 46-0">NV74 46-0</button>
+        </div>
+        <div id="out-mark" class="out"></div>
+      </div>
+
+      <div class="card">
+        <h3>2. IC Date Code Decoder</h3>
+        <label for="in-dc">3/4/5-Digit Lot Date Code</label>
+        <input id="in-dc" value="2418" autocomplete="off" spellcheck="false">
+        <div class="chips" data-target="in-dc">
+          <button type="button" data-v="2418">2418 (YYWW)</button>
+          <button type="button" data-v="0012">0012 (NSC 6-wk)</button>
+          <button type="button" data-v="24366">24366 (Julian)</button>
+          <button type="button" data-v="2053">2053 (W53)</button>
+        </div>
+        <div id="out-dc" class="out"></div>
+      </div>
+
+      <div class="card">
+        <h3>3. STM32 Ordering Code Decoder</h3>
+        <label for="in-stm">STM32 Orderable Part Number</label>
+        <input id="in-stm" value="STM32G030F6P6TR" autocomplete="off" spellcheck="false">
+        <div class="chips" data-target="in-stm">
+          <button type="button" data-v="STM32F103C8T6">STM32F103C8T6</button>
+          <button type="button" data-v="STM32H743VIT6">STM32H743VIT6</button>
+          <button type="button" data-v="STM32G474RET6">STM32G474RET6</button>
+        </div>
+        <div id="out-stm" class="out"></div>
+      </div>
+    </div>
+
+    <h2>Companion Interactive Browser Tools (Maintained by PartVane)</h2>
+    <p style="color:var(--mu);font-size:14px">Full web utilities with shareable BOM inspection deep links, J-STD-033 baking tables, and automotive suffix verification:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Engineering Tool</th>
+          <th>Direct Link</th>
+          <th>Standards &amp; Datasheet Coverage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>IC Top Marking &amp; SMD Code Lookup</strong></td>
+          <td><a href="https://www.partvane.com/tools/ic-marking-decoder/">partvane.com/tools/ic-marking-decoder/</a></td>
+          <td>144 datasheet-verified markings across TI, STMicroelectronics, onsemi, Microchip, Nexperia, Vishay &amp; Panasonic, flagging shared-marking substitution traps.</td>
+        </tr>
+        <tr>
+          <td><strong>IC Date Code Decoder</strong></td>
+          <td><a href="https://www.partvane.com/tools/date-code-decoder/">partvane.com/tools/date-code-decoder/</a></td>
+          <td>Parallel ISO 8601 week ranges for <code>YWW</code>, <code>YYWW</code>, <code>WWYY</code>, <code>YYMM</code>, <code>YYDDD</code> Julian &amp; <code>YY+</code> markings.</td>
+        </tr>
+        <tr>
+          <td><strong>Manufacturer Date Code Formats</strong></td>
+          <td><a href="https://www.partvane.com/tools/date-code-formats/">partvane.com/tools/date-code-formats/</a></td>
+          <td>Reference tables for <strong>onsemi AND8002/D</strong> 12-year repeating 2-letter codes and <strong>National Semiconductor SNOA039C</strong> 6-week assembly periods.</td>
+        </tr>
+        <tr>
+          <td><strong>STM32 Part Number Decoder</strong></td>
+          <td><a href="https://www.partvane.com/tools/stm32-part-number-decoder/">partvane.com/tools/stm32-part-number-decoder/</a></td>
+          <td>Field-by-field breakdown of pin count, flash capacity, package, temperature grade and packing backed by 19 STMicroelectronics datasheets.</td>
+        </tr>
+        <tr>
+          <td><strong>IC MSL Floor-Life &amp; Baking Calculator</strong></td>
+          <td><a href="https://www.partvane.com/tools/msl-calculator/">partvane.com/tools/msl-calculator/</a></td>
+          <td>IPC/JEDEC <strong>J-STD-020</strong> floor-life limits (MSL 1&ndash;6) and <strong>J-STD-033 Table 4-1</strong> baking schedules at 125 &deg;C, 90 &deg;C &amp; 40 &deg;C by carrier thermal limit.</td>
+        </tr>
+        <tr>
+          <td><strong>AEC-Q100 Automotive IC Suffix Decoder</strong></td>
+          <td><a href="https://www.partvane.com/tools/aec-q100-grade-decoder/">partvane.com/tools/aec-q100-grade-decoder/</a></td>
+          <td>AEC-Q100 Grades 0&ndash;4 (<code>-40 to +150 &deg;C</code>) and automotive ordering rules: TI <code>-Q1</code> &amp; <code>QW</code> wettable flanks, onsemi <code>NCV</code>/<code>SZ</code>, Nexperia <code>-Q100</code>, Microchip <code>-VAO</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>CLI &amp; Programmatic Usage (Node.js &amp; Python 3)</h2>
+    <pre><code>git clone https://github.com/lijianan659-lang/ic-stm32-decoder.git
+cd ic-stm32-decoder
+
+# Node.js (>= 18, zero npm dependencies)
+node ./bin/ic-stm32-decoder.js STM32G030F6P6TR
+node ./bin/ic-stm32-decoder.js 0012
+
+# Python 3 (>= 3.9, standard library only)
+python3 -m ic_stm32_decoder STM32H743VIT6
+python3 -m ic_stm32_decoder onsemi GJ</code></pre>
+
+    <h2>Related Datasheet Suffix &amp; Substitution Engineering Notes</h2>
+    <ul style="color:var(--mu);font-size:14px">
+      <li><a href="https://www.partvane.com/blog/tcan1042-vs-tcan1042h-vs-hgv/">TCAN1042 vs TCAN1042H vs HGV</a> &mdash; why 2 Mbps and 5 Mbps CAN FD variants share top marking <code>1042</code> and how Pin 8 <code>VIO</code> behaves.</li>
+      <li><a href="https://www.partvane.com/blog/amc1200-vs-amc1301-vs-amc3330/">AMC1200B vs AMC1301 vs AMC3330-Q1</a> &mdash; the fixed 8.0 V/V vs 8.2 V/V shunt-gain trap and DWV vs DUB MSL differences.</li>
+      <li><a href="https://www.partvane.com/blog/esp32-c5-vs-esp32-c61/">ESP32-C5 vs ESP32-C61 (HF4, HR2 &amp; HR8)</a> &mdash; dual-band 5 GHz Wi-Fi 6 / 802.15.4 vs 2.4 GHz SDIO 2.0 slave and in-package flash vs PSRAM suffixes.</li>
+      <li><a href="https://www.partvane.com/obsolete/identify-part-from-package-marking/">Identifying Unknown IC Package Markings</a> &mdash; why 3-to-5 character SOT-23 codes require logo and circuit verification.</li>
+    </ul>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Released under the MIT License &middot; Maintained by <a href="https://www.partvane.com/">PartVane</a> (Independent Active IC &amp; Semiconductor Distributor — <a href="https://www.partvane.com/line-card/">Semiconductor Line Card</a>).
+    </div>
+  </footer>
+
+  <script type="module">
+    import { lookupTopMarking, decodeDateCode, decodeStm32 } from './src/index.js';
+
+    const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+    function renderMark() {
+      const v = document.getElementById('in-mark').value;
+      const r = lookupTopMarking(v);
+      const box = document.getElementById('out-mark');
+      if (!r.ok) {
+        box.innerHTML = `<span style="color:var(--warn)">No verified match in the 144-entry table.</span> Never guess an unknown SMD marking — check <a href="https://www.partvane.com/tools/ic-marking-decoder/">full lookup &amp; TI/onsemi guides</a>.`;
+        return;
+      }
+      const m = r.matches[0];
+      const dt = r.dateTokens.length ? `<div style="margin-top:6px;color:var(--ok)">Companion lot token: <code>${esc(r.dateTokens.join(', '))}</code></div>` : '';
+      box.innerHTML = `<div><strong style="color:var(--ok)">${esc(m.mpn)}</strong> (${esc(m.mfr)}, ${esc(m.pkg)})</div>
+        <div style="color:var(--mu);margin-top:4px">Mark: <code>${esc(m.mark)}</code> &middot; ${esc(m.src)}</div>
+        <div style="margin-top:6px"><strong>IQC Trap:</strong> ${esc(m.trap)}</div>${dt}
+        <div style="margin-top:6px"><a href="${esc(m.pageUrl)}">Datasheet &amp; part specs &rarr;</a></div>`;
+    }
+
+    function renderDc() {
+      const v = document.getElementById('in-dc').value;
+      const r = decodeDateCode(v);
+      const box = document.getElementById('out-dc');
+      if (!r.ok) {
+        box.innerHTML = `<span style="color:var(--warn)">Invalid code:</span> ${esc(r.error || 'Enter a 3, 4 or 5 digit numeric date code.')}`;
+        return;
+      }
+      box.innerHTML = r.readings.map(x =>
+        `<div style="margin-bottom:6px"><strong style="color:var(--acc)">${esc(x.format)}</strong>: ${esc(x.isoCalendarRange || x.date || x.periodRange || '')} <span style="color:var(--mu)">(${esc(x.label)})</span></div>`
+      ).join('') + `<div style="margin-top:6px"><a href="https://www.partvane.com/tools/date-code-decoder/?c=${encodeURIComponent(r.input)}">Open full date code decoder &rarr;</a></div>`;
+    }
+
+    function renderStm() {
+      const v = document.getElementById('in-stm').value;
+      const r = decodeStm32(v);
+      const box = document.getElementById('out-stm');
+      if (!r.ok) {
+        box.innerHTML = `<span style="color:var(--warn)">Invalid STM32 code:</span> ${esc(r.error || 'Enter a full STM32 part number.')}`;
+        return;
+      }
+      box.innerHTML = `<div><strong style="color:var(--ok)">${esc(r.family?.name || r.input)}</strong></div>
+        <div style="margin-top:4px">Pins: <code>${esc(r.pinCount?.value)}</code> &middot; Flash: <code>${esc(r.flashSize?.value)}</code></div>
+        <div>Pkg: <code>${esc(r.package?.value)}</code> &middot; Temp: <code>${esc(r.temperatureRange?.value)}</code></div>
+        <div style="margin-top:6px"><a href="https://www.partvane.com/tools/stm32-part-number-decoder/?pn=${encodeURIComponent(r.input)}">Full ST datasheet breakdown &rarr;</a></div>`;
+    }
+
+    document.getElementById('in-mark').addEventListener('input', renderMark);
+    document.getElementById('in-dc').addEventListener('input', renderDc);
+    document.getElementById('in-stm').addEventListener('input', renderStm);
+    document.querySelectorAll('.chips button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.parentElement.getAttribute('data-target');
+        const el = document.getElementById(id);
+        el.value = btn.getAttribute('data-v');
+        el.dispatchEvent(new Event('input'));
+      });
+    });
+    renderMark(); renderDc(); renderStm();
+  </script>
+</body>
+</html>
