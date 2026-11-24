@@ -17,10 +17,12 @@ Need an instant visual breakdown or a shareable deep link for a BOM review, Slac
 
 | Online Engineering Tool | Direct URL & Shareable Deep-Link Example | What It Does |
 |---|---|---|
-| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match 112+ datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `GV`, `11B`, `ZFNR`, `5350MCQ`, `U282Q`, `AJNN`) + incoming-inspection traps |
+| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match **144** datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `GV`, `11B`, `ZFNR`, `5350MCQ`, `72630Q`, `H120Q`, `AJNN`) + incoming-inspection traps |
 | **Live IC Date Code Decoder** | https://www.partvane.com/tools/date-code-decoder/<br>Example: [`?c=2243&century=2000`](https://www.partvane.com/tools/date-code-decoder/?c=2243&century=2000) | Parallel decoding of `YWW`, `YYWW`, `WWYY`, `YYMM`, `YYDDD` Julian, and `YY+` markings into ISO week calendar ranges |
 | **Manufacturer Date Code Formats Reference** | https://www.partvane.com/tools/date-code-formats/ | Full reference tables for **onsemi `AND8002/D`** 12-year two-letter codes and **National Semiconductor `SNOA039C`** 6-week periods |
 | **Live STM32 Part Number Decoder** | https://www.partvane.com/tools/stm32-part-number-decoder/<br>Example: [`?pn=STM32F103C8T6`](https://www.partvane.com/tools/stm32-part-number-decoder/?pn=STM32F103C8T6) | Field-by-field STM32 order code breakdown backed by 19 STMicroelectronics datasheet ordering tables |
+| **IC MSL Floor-Life & Baking Calculator** | https://www.partvane.com/tools/msl-calculator/<br>Example: [`?msl=3&thk=t1&car=tr`](https://www.partvane.com/tools/msl-calculator/?msl=3&thk=t1&car=tr) | IPC/JEDEC **J-STD-020** floor-life limits (MSL 1–6) and **J-STD-033 Table 4-1** baking schedules at 125 °C, 90 °C & 40 °C by carrier thermal rating |
+| **AEC-Q100 Grade & Automotive Suffix Decoder** | https://www.partvane.com/tools/aec-q100-grade-decoder/<br>Example: [`?pn=TPS22965NQWDSGRQ1&g=g1`](https://www.partvane.com/tools/aec-q100-grade-decoder/?pn=TPS22965NQWDSGRQ1&g=g1) | Decode **AEC-Q100 Grades 0–4** (`-40..+150 °C`) and TI `-Q1` / `QW` wettable flanks, onsemi `NCV`/`SZ`, Nexperia `-Q100` & Microchip `-VAO` substitution traps |
 
 ---
 

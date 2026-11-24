@@ -1,6 +1,6 @@
 {
   "name": "ic-stm32-decoder",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Zero-dependency IC top marking & SMD code lookup, YYWW/Julian/onsemi/NSC date code decoder, and datasheet-backed STM32 part number decoder (Node.js ESM + Python 3).",
   "type": "module",
   "main": "./src/index.js",

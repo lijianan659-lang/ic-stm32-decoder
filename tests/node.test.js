@@ -283,4 +283,13 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   const wc = lookupTopMarking('AJ3K');
   assert.equal(wc.ok, true);
   assert.equal(wc.matches[0].mpn, 'MCP4725A0T-E/CH');
+
+  const lm72 = lookupTopMarking('72630Q 2514');
+  assert.equal(lm72.ok, true);
+  assert.match(lm72.matches[0].mpn, /LM72630QRRXRQ1/);
+  assert.deepEqual(lm72.dateTokens, ['2514']);
+
+  const ncv = lookupTopMarking('NV74 46-0');
+  assert.equal(ncv.ok, true);
+  assert.equal(ncv.matches[0].mpn, 'NCV7446MW0R2G');
 });

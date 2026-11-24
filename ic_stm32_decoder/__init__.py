@@ -21,7 +21,7 @@ from .stm32 import (
     decode_stm32,
 )
 
-__version__ = "1.1.0"
+__version__ = "1.3.0"
 
 __all__ = [
     "__version__",
