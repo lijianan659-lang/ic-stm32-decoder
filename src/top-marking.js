@@ -93,11 +93,11 @@ export const VERIFIED_TOP_MARKINGS = [
     "mfr": "Microchip Technology",
     "pkg": "SOT-23-6 (CH)",
     "kind": "Wildcard SMD",
+    "pat": "^AJ[A-Z0-9]{2}$",
     "src": "Microchip DS22039D Section 8.1",
     "trap": "First two letters set factory I2C address bits: AJ = A0 (00), AP = A1 (01), AQ = A2 (10), AR = A3 (11); last two characters (NN) are Microchip's alphanumeric traceability code.",
     "pageUrl": "https://www.partvane.com/parts/microchip-technology/mcp4725a0t-e-ch/",
-    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf",
-    "pat": "^AJ[A-Z0-9]{2}$"
+    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf"
   },
   {
     "mark": "APNN",
@@ -105,11 +105,11 @@ export const VERIFIED_TOP_MARKINGS = [
     "mfr": "Microchip Technology",
     "pkg": "SOT-23-6 (CH)",
     "kind": "Wildcard SMD",
+    "pat": "^AP[A-Z0-9]{2}$",
     "src": "Microchip DS22039D Section 8.1",
     "trap": "I2C address option A1 (AP + 2-char trace code). Will NACK firmware written for A0 (AJNN) if A0 pin is tied the same way.",
     "pageUrl": "https://www.partvane.com/parts/microchip-technology/mcp4725a0t-e-ch/",
-    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf",
-    "pat": "^AP[A-Z0-9]{2}$"
+    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf"
   },
   {
     "mark": "AQNN",
@@ -117,11 +117,11 @@ export const VERIFIED_TOP_MARKINGS = [
     "mfr": "Microchip Technology",
     "pkg": "SOT-23-6 (CH)",
     "kind": "Wildcard SMD",
+    "pat": "^AQ[A-Z0-9]{2}$",
     "src": "Microchip DS22039D Section 8.1",
     "trap": "I2C address option A2 (AQ + 2-char trace code); not firmware drop-in for A0 (AJNN) without changing I2C target address.",
     "pageUrl": "https://www.partvane.com/parts/microchip-technology/mcp4725a0t-e-ch/",
-    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf",
-    "pat": "^AQ[A-Z0-9]{2}$"
+    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf"
   },
   {
     "mark": "ARNN",
@@ -129,11 +129,11 @@ export const VERIFIED_TOP_MARKINGS = [
     "mfr": "Microchip Technology",
     "pkg": "SOT-23-6 (CH)",
     "kind": "Wildcard SMD",
+    "pat": "^AR[A-Z0-9]{2}$",
     "src": "Microchip DS22039D Section 8.1",
     "trap": "I2C address option A3 (AR + 2-char trace code) in SOT-23-6.",
     "pageUrl": "https://www.partvane.com/parts/microchip-technology/mcp4725a0t-e-ch/",
-    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf",
-    "pat": "^AR[A-Z0-9]{2}$"
+    "datasheetUrl": "https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf"
   },
   {
     "mark": "1M3Q",
@@ -1586,6 +1586,171 @@ export const VERIFIED_TOP_MARKINGS = [
     "trap": "3 A / 55 V DMOS H-bridge; legacy LMD prefix follows National Semiconductor 6-week date codes, and mounting tab connects to Pin 7 GND.",
     "pageUrl": "https://www.partvane.com/parts/texas-instruments/lmd18200t-nopb/",
     "datasheetUrl": "https://www.ti.com/lit/ds/symlink/lmd18200.pdf"
+  },
+  {
+    "mark": "MSPM0 G3507S",
+    "mpn": "MSPM0G3507SRHBR",
+    "mfr": "Texas Instruments",
+    "pkg": "VQFN-32 (RHB, 5x5 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SLASEX6C addendum (Apr 2026)",
+    "trap": "80 MHz Cortex-M0+ CAN-FD MCU (128 KB flash); 48-LQFP/64-LQFP mark M0G3507S, 28-VSSOP marks G3507S, and 64 KB MSPM0G3506 marks G3506S.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/mspm0g3507srhbr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/mspm0g3507.pdf"
+  },
+  {
+    "mark": "25751D BG",
+    "mpn": "TPS25751DREFR",
+    "mfr": "Texas Instruments",
+    "pkg": "WQFN-38 (REF, 4x6 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SLVSH93A addendum (Feb 2026)",
+    "trap": "USB-IF PD 3.1 controller with integrated 20 V / 5 A bi-dir PPHV switch; 32-VQFN TPS25751SRSMR marks 25751S / BG and drives external FETs.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tps25751drefr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tps25751.pdf"
+  },
+  {
+    "mark": "25751S BG",
+    "mpn": "TPS25751SRSMR",
+    "mfr": "Texas Instruments",
+    "pkg": "VQFN-32 (RSM, 4x4 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SLVSH93A addendum (Feb 2026)",
+    "trap": "External-FET gate-driver version (32-VQFN) of USB PD 3.1 controller; not drop-in for 38-WQFN TPS25751DREFR (marked 25751D / BG).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tps25751drefr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tps25751.pdf"
+  },
+  {
+    "mark": "UCC21750Q",
+    "mpn": "UCC21750QDWRQ1",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-16 WB (DW)",
+    "kind": "Truncated MPN",
+    "src": "TI SLUSDH9D addendum (Aug 2025)",
+    "trap": "AEC-Q100 Grade 1 5.7 kVRMS +/-10 A SiC/IGBT driver (MSL 3); tube option UCC21750QDWQ1 is Obsolete while 2000/reel QDWRQ1 is Active.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/ucc21750qdwrq1/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ucc21750-q1.pdf"
+  },
+  {
+    "mark": "ISO1042Q1",
+    "mpn": "ISO1042QDWRQ1",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-16 WB (DW)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLSFA5B addendum (Feb 2026)",
+    "trap": "Reinforced 5 kVRMS / 10 kVPK surge isolated 5 Mbps CAN FD transceiver (MSL 3); basic-isolation ISO1042BQDWRQ1 marks ISO1042BQ1 (6 kVPK).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso1042qdwrq1/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso1042-q1.pdf"
+  },
+  {
+    "mark": "ISO1042BQ1",
+    "mpn": "ISO1042BQDWRQ1",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-16 WB (DW)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLSFA5B addendum (Feb 2026)",
+    "trap": "Basic-isolation (6 kVPK surge) variant of ISO1042-Q1; reinforced designs require ISO1042QDWRQ1 (10 kVPK surge, marked ISO1042Q1).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso1042qdwrq1/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso1042-q1.pdf"
+  },
+  {
+    "mark": "1212",
+    "mpn": "ISO1212DBQR",
+    "mfr": "Texas Instruments",
+    "pkg": "SSOP-16 (DBQ)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLSEY7G addendum (Feb 2026)",
+    "trap": "Dual-channel IEC 61131-2 isolated 24-60 V PLC input receiver (NIPDAU); matte-Sn ISO1212SDBQR marks 1212S and single-ch SOIC-8 ISO1211DR marks 1211.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso1212dbqr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso1212.pdf"
+  },
+  {
+    "mark": "26600",
+    "mpn": "TPS26600PWPR",
+    "mfr": "Texas Instruments",
+    "pkg": "HTSSOP-16 (PWP)",
+    "kind": "Truncated MPN",
+    "src": "TI SLVSDG2G addendum (Nov 2025)",
+    "trap": "60 V / 2 A auto-retry eFuse (-60 V reverse protection); TPS26602PWPR (fixed 38 V clamp) marks 26602 in the identical HTSSOP-16 body.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tps26600pwpr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tps2660.pdf"
+  },
+  {
+    "mark": "TPS 65217C",
+    "mpn": "TPS65217CRSLR",
+    "mfr": "Texas Instruments",
+    "pkg": "VQFN-48 (RSL, 6x6 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SLVSB64I addendum (Nov 2025)",
+    "trap": "Sitara AM335x PMIC booting DCDC1 at 1.5 V (DDR3); TPS 65217D boots at 1.35 V (DDR3L), 65217B at 1.8 V and 65217A for ZCE — never swap suffixes!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tps65217crslr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tps65217.pdf"
+  },
+  {
+    "mark": "TPS 65217D",
+    "mpn": "TPS65217DRSLR",
+    "mfr": "Texas Instruments",
+    "pkg": "VQFN-48 (RSL, 6x6 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SLVSB64I addendum (Nov 2025)",
+    "trap": "AM335x-ZCZ DDR3L PMIC booting DCDC1 at 1.35 V; incompatible with 1.5 V DDR3 boards requiring TPS 65217C (TPS65217CRSLR).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tps65217crslr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tps65217.pdf"
+  },
+  {
+    "mark": "DAC7760",
+    "mpn": "DAC7760IPWPR",
+    "mfr": "Texas Instruments",
+    "pkg": "HTSSOP-24 (PWP)",
+    "kind": "Truncated MPN",
+    "src": "TI SBAS528D addendum (Nov 2025)",
+    "trap": "12-bit 4-20 mA / +/-10 V PLC DAC (MSL 3); pin-compatible 16-bit DAC8760IPWPR marks DAC8760, and thermal pad ties to AVSS.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/dac7760ipwpr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/dac7760.pdf"
+  },
+  {
+    "mark": "ADS1256IDB",
+    "mpn": "ADS1256IDBR",
+    "mfr": "Texas Instruments",
+    "pkg": "SSOP-28 (DB)",
+    "kind": "Truncated MPN",
+    "src": "TI SBAS288K addendum (Nov 2025)",
+    "trap": "24-bit 30 kSPS 8-ch ADC in 28-pin SSOP (MSL 2); 20-pin 2-ch sibling ADS1255IDBR marks ADS1255IDB.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/ads1256idbr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ads1256.pdf"
+  },
+  {
+    "mark": "TL16C550CIFN",
+    "mpn": "TL16C550CIFNR",
+    "mfr": "Texas Instruments",
+    "pkg": "PLCC-44 (FN)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLS177I addendum (Nov 2025)",
+    "trap": "Industrial -40..85 C 16-byte FIFO UART in PLCC-44 (MSL 3); commercial 0..70 C marks TL16C550CFN and 48-LQFP industrial marks TA550CI.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tl16c550cifnr/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tl16c550c.pdf"
+  },
+  {
+    "mark": "NV7344-3",
+    "mpn": "NCV7344MW3R2G",
+    "mfr": "onsemi",
+    "pkg": "DFNW8 (Case 507AB)",
+    "kind": "Truncated MPN",
+    "src": "onsemi NCV7344/D Rev. 4",
+    "trap": "Pin 5 = VIO (3-5 V MCU) with long wake filter; NV7344-0 leaves Pin 5 NC, and A-prefix NV7344A3 selects short wake-up filter time.",
+    "pageUrl": "https://www.partvane.com/parts/onsemi/ncv7344mw3r2g/",
+    "datasheetUrl": "https://www.onsemi.com/pdf/datasheet/ncv7344-d.pdf"
+  },
+  {
+    "mark": "8402A",
+    "mpn": "NCV8402AMNWT1G",
+    "mfr": "onsemi",
+    "pkg": "DFN6 WF (Case 506DK)",
+    "kind": "Truncated MPN",
+    "src": "onsemi NCV8402/D Rev. 28 (Dec 2023)",
+    "trap": "AEC-Q101 42 V self-protected SmartFET (A-version, 4.3 A ILIM @ 5 V); non-A SOT-223 NCV8402STT1G marks V8402.",
+    "pageUrl": "https://www.partvane.com/parts/onsemi/ncv8402amnwt1g/",
+    "datasheetUrl": "https://www.onsemi.com/pdf/datasheet/ncv8402-d.pdf"
   }
 ];
 

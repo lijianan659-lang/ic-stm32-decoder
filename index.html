@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ic-stm32-decoder v1.3.0 — Open-Source IC Top Marking, Date Code &amp; STM32 Decoder</title>
-  <meta name="description" content="Zero-dependency JavaScript (ESM) and Python 3 toolkit for datasheet-verified IC top markings (144 SMD codes), YYWW/Julian/onsemi/NSC date codes, and STM32 ordering part numbers.">
+  <title>ic-stm32-decoder v1.4.0 — Open-Source IC Top Marking, Date Code &amp; STM32 Decoder</title>
+  <meta name="description" content="Zero-dependency JavaScript (ESM) and Python 3 toolkit for datasheet-verified IC top markings (159 SMD codes), YYWW/Julian/onsemi/NSC date codes, and STM32 ordering part numbers.">
   <link rel="canonical" href="https://lijianan659-lang.github.io/ic-stm32-decoder/">
   <style>
     :root {
@@ -114,16 +114,16 @@
 <body>
   <header>
     <div class="wrap">
-      <span class="badge">v1.3.0 MIT</span>
+      <span class="badge">v1.4.0 MIT</span>
       <span class="badge">0 Dependencies</span>
       <span class="badge">Node.js ESM + Python 3</span>
       <h1>ic-stm32-decoder — IC Top Marking, Date Code &amp; STM32 Ordering Toolkit</h1>
       <p class="lead">
-        Open-source incoming quality control (IQC) and hardware engineering library for decoding cryptic SMD package markings (144 datasheet-verified entries), parallel ISO week / Julian / onsemi / National Semiconductor lot codes, and STM32 ordering suffixes.
+        Open-source incoming quality control (IQC) and hardware engineering library for decoding cryptic SMD package markings (159 datasheet-verified entries), parallel ISO week / Julian / onsemi / National Semiconductor lot codes, and STM32 ordering suffixes.
       </p>
       <p style="margin:0;font-size:14px">
         <a href="https://github.com/lijianan659-lang/ic-stm32-decoder">GitHub Repository</a> &middot;
-        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder/releases/tag/v1.3.0">Release v1.3.0</a> &middot;
+        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder/releases/tag/v1.4.0">Release v1.4.0</a> &middot;
         <a href="https://www.partvane.com/tools/">PartVane IC Engineering Tools Hub</a>
       </p>
     </div>
@@ -135,14 +135,15 @@
 
     <div class="grid3">
       <div class="card">
-        <h3>1. IC Top Marking Lookup (144 Codes)</h3>
+        <h3>1. IC Top Marking Lookup (159 Codes)</h3>
         <label for="in-mark">Package Top Marking or MPN</label>
         <input id="in-mark" value="PTSI 2418" autocomplete="off" spellcheck="false">
         <div class="chips" data-target="in-mark">
           <button type="button" data-v="ZAKX">ZAKX</button>
           <button type="button" data-v="15OX">15OX</button>
           <button type="button" data-v="5350MCQ">5350MCQ</button>
-          <button type="button" data-v="72630Q 2514">72630Q</button>
+          <button type="button" data-v="NV7344-3">NV7344-3</button>
+          <button type="button" data-v="TPS 65217C">TPS 65217C</button>
           <button type="button" data-v="NV74 46-0">NV74 46-0</button>
         </div>
         <div id="out-mark" class="out"></div>
@@ -188,7 +189,12 @@
         <tr>
           <td><strong>IC Top Marking &amp; SMD Code Lookup</strong></td>
           <td><a href="https://www.partvane.com/tools/ic-marking-decoder/">partvane.com/tools/ic-marking-decoder/</a></td>
-          <td>144 datasheet-verified markings across TI, STMicroelectronics, onsemi, Microchip, Nexperia, Vishay &amp; Panasonic, flagging shared-marking substitution traps.</td>
+          <td>159 datasheet-verified markings across TI, STMicroelectronics, onsemi, Microchip, Nexperia, Vishay &amp; Panasonic, flagging shared-marking substitution traps.</td>
+        </tr>
+        <tr>
+          <td><strong>IC Cross-Reference &amp; Drop-In Trap Checker</strong></td>
+          <td><a href="https://www.partvane.com/tools/cross-reference/">partvane.com/tools/cross-reference/</a></td>
+          <td>32 datasheet-backed drop-in vs conditional crosses catching gain (8.0 vs 8.2), Reinforced vs Basic isolation (10 vs 6 kVPK), Pin-5 VIO and PMIC boot-voltage traps.</td>
         </tr>
         <tr>
           <td><strong>IC Date Code Decoder</strong></td>
@@ -232,6 +238,8 @@ python3 -m ic_stm32_decoder onsemi GJ</code></pre>
 
     <h2>Related Datasheet Suffix &amp; Substitution Engineering Notes</h2>
     <ul style="color:var(--mu);font-size:14px">
+      <li><a href="https://www.partvane.com/blog/ucc21750-vs-ucc5350-vs-ncv5705-gate-drivers/">UCC21750-Q1 vs UCC5350-Q1 vs NCV57252 &amp; NCV5705B</a> &mdash; isolated vs non-isolated SiC/IGBT gate drivers, Pin-6/7 Miller clamp vs split OUTH/OUTL, and shared <code>5350Q</code> / <code>57252</code> marking traps.</li>
+      <li><a href="https://www.partvane.com/blog/iso1042-vs-iso1050-vs-tcan1042-can-fd/">ISO1042-Q1 vs ISO1050 vs TCAN1042 &amp; NCV7344</a> &mdash; 5 Mbps CAN FD vs 1 Mbps CAN, Reinforced 10 kVPK vs Basic 6 kVPK isolation, and the Pin-5 vs Pin-8 VIO pinout split.</li>
       <li><a href="https://www.partvane.com/blog/tcan1042-vs-tcan1042h-vs-hgv/">TCAN1042 vs TCAN1042H vs HGV</a> &mdash; why 2 Mbps and 5 Mbps CAN FD variants share top marking <code>1042</code> and how Pin 8 <code>VIO</code> behaves.</li>
       <li><a href="https://www.partvane.com/blog/amc1200-vs-amc1301-vs-amc3330/">AMC1200B vs AMC1301 vs AMC3330-Q1</a> &mdash; the fixed 8.0 V/V vs 8.2 V/V shunt-gain trap and DWV vs DUB MSL differences.</li>
       <li><a href="https://www.partvane.com/blog/esp32-c5-vs-esp32-c61/">ESP32-C5 vs ESP32-C61 (HF4, HR2 &amp; HR8)</a> &mdash; dual-band 5 GHz Wi-Fi 6 / 802.15.4 vs 2.4 GHz SDIO 2.0 slave and in-package flash vs PSRAM suffixes.</li>
@@ -255,7 +263,7 @@ python3 -m ic_stm32_decoder onsemi GJ</code></pre>
       const r = lookupTopMarking(v);
       const box = document.getElementById('out-mark');
       if (!r.ok) {
-        box.innerHTML = `<span style="color:var(--warn)">No verified match in the 144-entry table.</span> Never guess an unknown SMD marking — check <a href="https://www.partvane.com/tools/ic-marking-decoder/">full lookup &amp; TI/onsemi guides</a>.`;
+        box.innerHTML = `<span style="color:var(--warn)">No verified match in the 159-entry table.</span> Never guess an unknown SMD marking — check <a href="https://www.partvane.com/tools/ic-marking-decoder/">full lookup &amp; TI/onsemi guides</a>.`;
         return;
       }
       const m = r.matches[0];

@@ -28,9 +28,12 @@ Examples:
 
 Interactive Web Tools (No Sign-up):
   IC Top Marking Lookup:    https://www.partvane.com/tools/ic-marking-decoder/
+  IC Cross-Reference Tool:  https://www.partvane.com/tools/cross-reference/
   IC Date Code Decoder:     https://www.partvane.com/tools/date-code-decoder/
   Marking Formats Guide:    https://www.partvane.com/tools/date-code-formats/
-  STM32 Part Decoder:       https://www.partvane.com/tools/stm32-part-number-decoder/`);
+  STM32 Part Decoder:       https://www.partvane.com/tools/stm32-part-number-decoder/
+  IC MSL Bake Calculator:   https://www.partvane.com/tools/msl-calculator/
+  AEC-Q100 Suffix Decoder:  https://www.partvane.com/tools/aec-q100-grade-decoder/`);
 }
 
 function parseArgs(argv) {

@@ -13,6 +13,7 @@ import {
   decodeOnsemiTwoLetter,
   decodeNationalSixWeek,
   decodeStm32,
+  VERIFIED_TOP_MARKINGS,
   lookupTopMarking,
 } from '../src/index.js';
 
@@ -292,4 +293,18 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   const ncv = lookupTopMarking('NV74 46-0');
   assert.equal(ncv.ok, true);
   assert.equal(ncv.matches[0].mpn, 'NCV7446MW0R2G');
+
+  assert.equal(VERIFIED_TOP_MARKINGS.length, 159);
+
+  const pd25751 = lookupTopMarking('25751D BG');
+  assert.equal(pd25751.ok, true);
+  assert.equal(pd25751.matches[0].mpn, 'TPS25751DREFR');
+
+  const ncv7344 = lookupTopMarking('NV7344-3');
+  assert.equal(ncv7344.ok, true);
+  assert.equal(ncv7344.matches[0].mpn, 'NCV7344MW3R2G');
+
+  const pmic65217 = lookupTopMarking('TPS 65217C');
+  assert.equal(pmic65217.ok, true);
+  assert.equal(pmic65217.matches[0].mpn, 'TPS65217CRSLR');
 });

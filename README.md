@@ -17,7 +17,8 @@ Need an instant visual breakdown or a shareable deep link for a BOM review, Slac
 
 | Online Engineering Tool | Direct URL & Shareable Deep-Link Example | What It Does |
 |---|---|---|
-| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match **144** datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `GV`, `11B`, `ZFNR`, `5350MCQ`, `72630Q`, `H120Q`, `AJNN`) + incoming-inspection traps |
+| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match **159** datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `5350MCQ`, `UCC21750Q`, `ISO1042Q1`, `NV7344-3`, `25751D BG`, `TPS 65217C`) + incoming-inspection traps |
+| **Live IC Cross-Reference & Trap Checker** | https://www.partvane.com/tools/cross-reference/<br>Example: [`?pn=AMC1200BDWVR`](https://www.partvane.com/tools/cross-reference/?pn=AMC1200BDWVR) | Verify **32** datasheet-backed drop-in vs conditional crosses (`AMC1200B` 8.0 vs `AMC1301` 8.2 gain, `ISO1042Q1` Reinforced vs `BQ1` Basic, `TPS65217C` vs `D` boot rails, `NCV7344-3` VIO vs `-0` NC) |
 | **Live IC Date Code Decoder** | https://www.partvane.com/tools/date-code-decoder/<br>Example: [`?c=2243&century=2000`](https://www.partvane.com/tools/date-code-decoder/?c=2243&century=2000) | Parallel decoding of `YWW`, `YYWW`, `WWYY`, `YYMM`, `YYDDD` Julian, and `YY+` markings into ISO week calendar ranges |
 | **Manufacturer Date Code Formats Reference** | https://www.partvane.com/tools/date-code-formats/ | Full reference tables for **onsemi `AND8002/D`** 12-year two-letter codes and **National Semiconductor `SNOA039C`** 6-week periods |
 | **Live STM32 Part Number Decoder** | https://www.partvane.com/tools/stm32-part-number-decoder/<br>Example: [`?pn=STM32F103C8T6`](https://www.partvane.com/tools/stm32-part-number-decoder/?pn=STM32F103C8T6) | Field-by-field STM32 order code breakdown backed by 19 STMicroelectronics datasheet ordering tables |
@@ -251,10 +252,13 @@ npm run test:all
 
 ### 免登录在线交互版
 
-- **在线芯片丝印与 SMD 顶标反查器**：https://www.partvane.com/tools/ic-marking-decoder/
+- **在线芯片丝印与 SMD 顶标反查器（159 条原厂丝印）**：https://www.partvane.com/tools/ic-marking-decoder/
+- **在线 IC 料号替代与 Pin-to-Pin 陷阱核对器（32 组对照）**：https://www.partvane.com/tools/cross-reference/
 - **在线 IC 日期码解码器**：https://www.partvane.com/tools/date-code-decoder/
 - **原厂特殊日期码格式速查表（onsemi & National Semi）**：https://www.partvane.com/tools/date-code-formats/
 - **在线 STM32 料号尾缀解码器**：https://www.partvane.com/tools/stm32-part-number-decoder/
+- **IC 潮敏等级 MSL 烘烤时间计算器（J-STD-020 / J-STD-033）**：https://www.partvane.com/tools/msl-calculator/
+- **AEC-Q100 车规等级与后缀解码器**：https://www.partvane.com/tools/aec-q100-grade-decoder/
 
 ---
 

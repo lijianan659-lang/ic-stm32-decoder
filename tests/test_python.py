@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 from ic_stm32_decoder import (  # noqa: E402
     NSC_SNOA039C_PERIODS,
     ONSEMI_AND8002_TABLE,
+    VERIFIED_TOP_MARKINGS,
     decode_date_code,
     decode_national_six_week,
     decode_onsemi_two_letter,
@@ -172,7 +173,14 @@ class TestIcStm32Decoder(unittest.TestCase):
             ["nsc", "9948", "--century", "1900", "--ref-year", "2026", "--json"],
             ["marking", "PTSI", "2418", "--json"],
             ["marking", "AJ3K", "--json"],
+            ["marking", "25751D", "BG", "--json"],
+            ["marking", "NV7344-3", "--json"],
+            ["marking", "TPS", "65217C", "--json"],
         ]
+        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 159)
+        self.assertEqual(lookup_top_marking("25751D BG")["matches"][0]["mpn"], "TPS25751DREFR")
+        self.assertEqual(lookup_top_marking("NV7344-3")["matches"][0]["mpn"], "NCV7344MW3R2G")
+        self.assertEqual(lookup_top_marking("TPS 65217C")["matches"][0]["mpn"], "TPS65217CRSLR")
         node_bin = ROOT / "bin" / "ic-stm32-decoder.js"
         for args in cases:
             py_run = subprocess.run(
