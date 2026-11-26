@@ -1,0 +1,463 @@
+export const VERIFIED_CROSS_REFERENCES = [
+  {
+    "src": "AMC1200BDWVR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/amc1200bdwvr/",
+    "alt": "AMC1301DWVR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/amc1301dwvr/",
+    "verdict": "NOT Drop-In",
+    "pkg": "Wide SOIC-8 (DWV)",
+    "note": "Identical DWV-8 pinout and +/-250 mV shunt input, but AMC1200B has fixed gain 8.0 V/V while AMC1301 has fixed gain 8.2 V/V (causes 2.5% current-loop gain error unless scaled in firmware). Also check MSL 2 (DWVR) vs MSL 3 (AMC1301DWVR / DUBR) vs MSL 4 (AMC1200BDUB).",
+    "doc": ""
+  },
+  {
+    "src": "INA128UA/2K5",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ina128ua-2k5/",
+    "alt": "INA828IDR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Pin-Compatible",
+    "pkg": "SOIC-8 (D)",
+    "note": "Explicitly cited in TI SBOS051G (Jan 2026) as the upgraded drop-in precision instrumentation amplifier: same G = 1 + 50 kOhm / RG equation and pinout, with lower bias current (0.6 nA max vs 5 nA) and lower noise (7 nV/rtHz vs 8 nV/rtHz).",
+    "doc": ""
+  },
+  {
+    "src": "INA128UA/2K5",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ina128ua-2k5/",
+    "alt": "INA129UA/2K5",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-8 (D)",
+    "note": "Same SOIC-8 pinout, +/-40 V protection and +/-2.25..18 V rails, but INA128 uses 50 kOhm in its gain formula (G = 1 + 50k/RG) whereas INA129 uses 49.4 kOhm (AD620 compatibility). Also note INA128UA/2K5 is MSL 2 while INA129UA/2K5 is MSL 3.",
+    "doc": ""
+  },
+  {
+    "src": "ISO1042QDWRQ1",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/iso1042qdwrq1/",
+    "alt": "ISO1042BQDWRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-16 WB (DW)",
+    "note": "Same SOIC-16 pinout, 5 Mbps CAN FD and +/-70 V bus protection, but ISO1042Q1 is Reinforced isolation (10,000 VPK surge) whereas ISO1042BQ1 is Basic isolation (6,000 VPK surge). Never downgrade safety-rated BOMs from Reinforced to Basic.",
+    "doc": ""
+  },
+  {
+    "src": "TCAN1057AVDRQ1",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tcan1057avdrq1/",
+    "alt": "TCAN1057ADRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-8 (D)",
+    "note": "V-suffix (marking 1057AV) routes 1.7-5.5 V VIO level-shifter supply to Pin 5; non-V TCAN1057A leaves Pin 5 NC. Leaving Pin 5 floating on a V-part locks out TXD/RXD communication.",
+    "doc": ""
+  },
+  {
+    "src": "NCV7344MW3R2G",
+    "srcMfr": "onsemi",
+    "srcUrl": "https://www.partvane.com/parts/onsemi/ncv7344mw3r2g/",
+    "alt": "NCV7344MW0R2G",
+    "altMfr": "onsemi",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "DFNW8 (Case 507AB)",
+    "note": "-3 variants (mark NV7344-3) wire Pin 5 to VIO for 3-5 V MCU interfacing; -0 variants (mark NV7344-0) leave Pin 5 NC and break 3.3 V logic translation.",
+    "doc": ""
+  },
+  {
+    "src": "TPS65217CRSLR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tps65217crslr/",
+    "alt": "TPS65217DRSLR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "VQFN-48 (RSL)",
+    "note": "Pin-identical 48-VQFN Sitara AM335x PMICs with different OTP boot voltages per TI SLVSB64I Section 5: TPS65217C boots DCDC1 at 1.5 V (DDR3) while TPS65217D boots DCDC1 at 1.35 V (DDR3L).",
+    "doc": ""
+  },
+  {
+    "src": "UCC21750QDWQ1",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ucc21750qdwrq1/",
+    "alt": "UCC21750QDWRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/ucc21750qdwrq1/",
+    "verdict": "Pin-Compatible",
+    "pkg": "SOIC-16 WB (DW)",
+    "note": "Per TI SLUSDH9D addendum (Aug 2025), tube option UCC21750QDWQ1 is OBSOLETE; UCC21750QDWRQ1 (2000/reel) is the identical Active Production silicon (marking UCC21750Q, MSL 3).",
+    "doc": ""
+  },
+  {
+    "src": "DAC7760IPWPR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/dac7760ipwpr/",
+    "alt": "DAC8760IPWPR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Pin-Compatible",
+    "pkg": "HTSSOP-24 (PWP)",
+    "note": "Per TI SBAS528D, 16-bit DAC8760IPWPR is pin-compatible with 12-bit DAC7760IPWPR (4-20 mA & +/-10 V simultaneous outputs, HART-IN); confirm SPI data formatting for 16-bit resolution.",
+    "doc": ""
+  },
+  {
+    "src": "ADS1256IDBR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ads1256idbr/",
+    "alt": "ADS1255IDBR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "SSOP-28 vs SSOP-20",
+    "note": "Same 24-bit 30 kSPS ADC core, but ADS1256 is 28-pin SSOP (4 diff / 8 SE inputs, D0-D3) while ADS1255 is 20-pin SSOP (1 diff / 2 SE inputs, D0-D1).",
+    "doc": ""
+  },
+  {
+    "src": "ESP32-C5HF4",
+    "srcMfr": "Espressif Systems",
+    "srcUrl": "https://www.partvane.com/parts/espressif/esp32-c5hf4/",
+    "alt": "ESP32-C61HF4",
+    "altMfr": "Espressif Systems",
+    "altUrl": "https://www.partvane.com/parts/espressif/esp32-c61hf4/",
+    "verdict": "NOT Drop-In",
+    "pkg": "QFN48 (6x6) vs QFN40 (5x5)",
+    "note": "Different package footprints and radios: ESP32-C5HF4 adds 5 GHz Wi-Fi 6, 802.15.4 Thread/Zigbee and dual CAN FD (QFN48), whereas ESP32-C61HF4 is 2.4 GHz Wi-Fi 6 + SDIO 2.0 slave (QFN40).",
+    "doc": ""
+  },
+  {
+    "src": "ESP32-C5HF4",
+    "srcMfr": "Espressif Systems",
+    "srcUrl": "https://www.partvane.com/parts/espressif/esp32-c5hf4/",
+    "alt": "ESP32-C5HR2",
+    "altMfr": "Espressif Systems",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "QFN48 (6x6 mm)",
+    "note": "HF4 integrates 4 MB internal SPI flash with zero PSRAM, whereas HR2/HR8 integrate 2 MB / 8 MB PSRAM and NO internal flash (external flash IC required on PCB).",
+    "doc": ""
+  },
+  {
+    "src": "ESP32-P4NRW32X",
+    "srcMfr": "Espressif Systems",
+    "srcUrl": "https://www.partvane.com/parts/espressif/esp32-p4nrw32x/",
+    "alt": "ESP32-P4NRW16X",
+    "altMfr": "Espressif Systems",
+    "altUrl": "",
+    "verdict": "Pin-Compatible",
+    "pkg": "QFN104 (10x10 mm)",
+    "note": "Per ESP32-P4 Datasheet v0.7 (July 2026), identical QFN104 pinout and 1.8 V PSRAM rail; only in-package PSRAM size changes from 32 MB to 16 MB (both require external flash).",
+    "doc": ""
+  },
+  {
+    "src": "TPS25751DREFR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tps25751drefr/",
+    "alt": "TPS25751SRSMR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "WQFN-38 vs VQFN-32",
+    "note": "TPS25751D (38-WQFN 4x6 mm, mark 25751D) integrates the 20 V / 5 A bi-directional PPHV switch; TPS25751S (32-VQFN 4x4 mm, mark 25751S) drives external MOSFETs via GATE_VBUS/GATE_VSYS.",
+    "doc": ""
+  },
+  {
+    "src": "TPS26600PWPR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tps26600pwpr/",
+    "alt": "TPS26602PWPR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Conditional Cross",
+    "pkg": "HTSSOP-16 (PWP)",
+    "note": "Pin-compatible HTSSOP-16 eFuses, but TPS26600 (mark 26600) has adjustable OVP cut-off whereas TPS26602 (mark 26602) clamps output at a fixed 38 V during overvoltage.",
+    "doc": ""
+  },
+  {
+    "src": "SN75176BDR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "",
+    "alt": "SN65HVD1781DR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/sn65hvd1781dr/",
+    "verdict": "Pin-Compatible",
+    "pkg": "SOIC-8 (D)",
+    "note": "SN65HVD1781DR (mark VP1781) is TI's pin-compatible drop-in upgrade for legacy SN75176 RS-485 transceivers, adding +/-70 V continuous bus fault protection and +/-16 kV HBM ESD.",
+    "doc": ""
+  },
+  {
+    "src": "KS74HCTLS14N",
+    "srcMfr": "Samsung (Discontinued)",
+    "srcUrl": "https://www.partvane.com/obsolete/samsung-ks74hctls14n-schmitt-inverter/",
+    "alt": "SN74HCT14N",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Pin-Compatible",
+    "pkg": "PDIP-14",
+    "note": "Cross-brand HCT14 DIP-14 equivalent for obsolete Samsung KS74HCTLS14N. Never substitute 74HC14 (CMOS threshold) for 74HCT14 (TTL threshold) on 3.3 V-to-5 V interfaces.",
+    "doc": ""
+  },
+  {
+    "src": "TJA1021T/20",
+    "srcMfr": "NXP Semiconductors",
+    "srcUrl": "https://www.partvane.com/obsolete/nxp-tja1021t-lin-transceiver/",
+    "alt": "TJA1021T/10",
+    "altMfr": "NXP Semiconductors",
+    "altUrl": "https://www.partvane.com/obsolete/nxp-tja1021t-lin-transceiver/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SO8 (T)",
+    "note": "Identical SO8 footprint, but /20 is normal-slope 20 kBd LIN while /10 is low-slope 10.4 kBd (SAE J2602). In NXP Rev. 9, TJA1021BT corresponds to /20 and TJA1021AT to /10.",
+    "doc": ""
+  },
+  {
+    "src": "4608X-102-103LF",
+    "srcMfr": "Bourns",
+    "srcUrl": "https://www.partvane.com/obsolete/bourns-4608x-resistor-networks/",
+    "alt": "4608X-101-103LF",
+    "altMfr": "Bourns",
+    "altUrl": "https://www.partvane.com/obsolete/bourns-4608x-resistor-networks/",
+    "verdict": "NOT Drop-In",
+    "pkg": "8-pin SIP",
+    "note": "Identical 8-SIP package body, but 102 is 4 isolated resistors (300 mW/el) while 101 is 7 bussed resistors sharing Pin 1 common (200 mW/el). Never substitute without schematic check.",
+    "doc": ""
+  },
+  {
+    "src": "SMBJ7.5A",
+    "srcMfr": "Littelfuse / Vishay",
+    "srcUrl": "https://www.partvane.com/obsolete/smbj7-5a-1smb7-5at3g-tvs/",
+    "alt": "1SMB7.5AT3G",
+    "altMfr": "onsemi",
+    "altUrl": "https://www.partvane.com/obsolete/smbj7-5a-1smb7-5at3g-tvs/",
+    "verdict": "Pin-Compatible",
+    "pkg": "SMB (DO-214AA)",
+    "note": "Both are unidirectional 7.5 V standoff SMB TVS diodes (A = unidirectional; CA = bidirectional). Never substitute bidirectional CA for unidirectional A without verifying reverse clamping.",
+    "doc": ""
+  },
+  {
+    "src": "CH340G",
+    "srcMfr": "WCH",
+    "srcUrl": "https://www.partvane.com/parts/wch/ch340g/",
+    "alt": "CP2102-GMR",
+    "altMfr": "Silicon Labs",
+    "altUrl": "https://www.partvane.com/parts/silicon-labs/cp2102-gmr/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-16 vs QFN-28",
+    "note": "Functional USB-to-UART cross at board-design level only: CH340G uses SOIC-16 + external 12 MHz crystal (no EEPROM), while CP2102-GMR uses QFN-28 (crystal-less, internal EEPROM, different drivers).",
+    "doc": ""
+  },
+  {
+    "src": "STM32F103C8T6",
+    "srcMfr": "STMicroelectronics",
+    "srcUrl": "https://www.partvane.com/parts/stmicroelectronics/stm32f103c8t6/",
+    "alt": "STM32F103CBT6",
+    "altMfr": "STMicroelectronics",
+    "altUrl": "https://www.partvane.com/parts/stmicroelectronics/stm32f103cbt6/",
+    "verdict": "Pin-Compatible",
+    "pkg": "LQFP-48",
+    "note": "Medium-density 128 KB flash upgrade (CB) for 64 KB STM32F103C8T6 in identical LQFP-48 pinout; 32 KB C6T6 (low-density) drops peripherals and smaller flash.",
+    "doc": ""
+  },
+  {
+    "src": "TCAN1042HGVDR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tcan1042hgvdr/",
+    "alt": "TJA1050T",
+    "altMfr": "NXP Semiconductors",
+    "altUrl": "https://www.partvane.com/parts/nxp/tja1050t/",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-8",
+    "note": "TJA1050T is classic 1 Mbps CAN with Pin 8 = Silent mode (S); TCAN1042HGVDR supports 5 Mbps CAN FD with Pin 8 = VIO level shifter. Never cross Pin 8 without checking the schematic.",
+    "doc": ""
+  },
+  {
+    "src": "LM358DR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/lm358dr/",
+    "alt": "LM358BIDR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/lm358bidr/",
+    "verdict": "Pin-Compatible",
+    "pkg": "SOIC-8 (D)",
+    "note": "B-generation upgrade (mark LM358B): raises supply rating from 30/32 V to 36 V, widens temp to -40..+85 C (vs 0..70 C on LM358DR) and cuts VOS to 3 mV max. For +125 C use LM2904BIDR.",
+    "doc": ""
+  },
+  {
+    "src": "LM2596S-5.0/NOPB",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/lm2596s-5-0-nopb/",
+    "alt": "LM2576T-5.0/NOPB",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/lm2576t-5-0-nopb/",
+    "verdict": "NOT Drop-In",
+    "pkg": "DDPAK vs TO-220",
+    "note": "LM2596 switches at 150 kHz (smaller inductor) while LM2576 switches at 52 kHz (requires ~3x larger inductance); also DDPAK SMD vs TO-220 through-hole.",
+    "doc": ""
+  },
+  {
+    "src": "TPS62130RGTR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tps62130rgtr/",
+    "alt": "TPS62130ARGTR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/tps62130rgtr/",
+    "verdict": "Conditional Cross",
+    "pkg": "VQFN-16 (RGT, 3x3 mm)",
+    "note": "TPS62130RGTR (mark PTSI) pulls PG low when EN=Low, whereas TPS62130ARGTR (mark PA6I) leaves PG high-Z when EN=Low. Do not confuse with fixed 1.8/2.5/3.3 V TPS62131/32/33.",
+    "doc": ""
+  },
+  {
+    "src": "SN65HVD230DR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/sn65hvd230dr/",
+    "alt": "SN65HVD231DR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/sn65hvd231dr/",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-8 (D)",
+    "note": "Markings VP230 vs VP231: SN65HVD230 keeps receiver active in listen-only standby (370 uA, supports CAN bus wake-up), whereas SN65HVD231 turns receiver off in 40 nA sleep.",
+    "doc": ""
+  },
+  {
+    "src": "LMR43610MSC3RPERQ1",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/lmr43610msc3rperq1/",
+    "alt": "LMR43610RS3QRPERQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/lmr43610msc3rperq1/",
+    "verdict": "NOT Drop-In",
+    "pkg": "VQFN-HR-9 (RPE, 2x2 mm)",
+    "note": "Markings 1M3Q vs 1R3Q: on 1M3Q (M), Pin 1 is MODE/SYNC logic input; on 1R3Q (R), Pin 1 is RT resistor-programmed frequency. Swapping breaks synchronization or frequency.",
+    "doc": ""
+  },
+  {
+    "src": "LMQ61460AASQRJRRQ1",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/lmq61460aasqrjrrq1/",
+    "alt": "LMQ61460AFSQRJRRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/lmq61460aasqrjrrq1/",
+    "verdict": "Conditional Cross",
+    "pkg": "VQFN-HR-14 (RJR)",
+    "note": "Both share line-1 mark Q6146Q: line-2 AAS is Auto PFM/PWM (7 uA sleep IQ), whereas AFS is Forced PWM (continuous switching at light load, draining standby batteries).",
+    "doc": ""
+  },
+  {
+    "src": "SN74HC244PWR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/sn74hc244pwr/",
+    "alt": "SN74HC245PWR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/sn74hc245pwr/",
+    "verdict": "NOT Drop-In",
+    "pkg": "TSSOP-20 (PW)",
+    "note": "Both are 20-pin octal buffers, but SN74HC244 is unidirectional dual 4-bit (two /OE pins), whereas SN74HC245 is bidirectional 8-bit transceiver (DIR + /OE, flow-through pinout).",
+    "doc": ""
+  },
+  {
+    "src": "W25Q128JVSIQ",
+    "srcMfr": "Winbond Electronics",
+    "srcUrl": "https://www.partvane.com/parts/winbond/w25q128jvsiq/",
+    "alt": "24LC256-I/P",
+    "altMfr": "Microchip Technology",
+    "altUrl": "https://www.partvane.com/parts/microchip/24lc256-i-p/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-8 vs PDIP-8",
+    "note": "Completely different memory buses: W25Q128JV is 128 Mbit (16 MB) 3.3 V SPI NOR flash while 24LC256 is 256 Kbit (36 KB) 2.5-5.5 V I2C EEPROM — never interchangeable.",
+    "doc": ""
+  },
+  {
+    "src": "MAX6675ISA+",
+    "srcMfr": "Analog Devices (Maxim Integrated)",
+    "srcUrl": "https://www.partvane.com/parts/analog-devices-maxim-integrated/max6675isa-plus/",
+    "alt": "MAX31865ATP+",
+    "altMfr": "Analog Devices (Maxim Integrated)",
+    "altUrl": "https://www.partvane.com/parts/analog-devices-maxim-integrated/max31865atp-plus/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-8 vs TQFN-20",
+    "note": "Different temperature sensor families: MAX6675 is Type-K thermocouple-to-digital (0..1024 C, SOIC-8), whereas MAX31865 is PT100/PT1000 RTD-to-digital (TQFN-20/SSOP-20).",
+    "doc": ""
+  },
+  {
+    "src": "MCP2551-I/SN",
+    "srcMfr": "Microchip Technology",
+    "srcUrl": "https://www.partvane.com/parts/microchip/mcp2551-i-sn/",
+    "alt": "TCAN1057AVDRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/tcan1057avdrq1/",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-8 (150 mil)",
+    "note": "MCP2551 (NRND) outputs VDD/2 VREF on Pin 5 and uses an analog slope resistor on Pin 8 (RS); TCAN1057AV requires 1.8-5.5 V VIO supply on Pin 5 (use non-V TCAN1057A if Pin 5 floats) and digital S silent-mode input on Pin 8.",
+    "doc": ""
+  },
+  {
+    "src": "ISO7240CDW",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/iso7240cdw/",
+    "alt": "ISO7240CFDWR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-16 WB (DW)",
+    "note": "Obsolete tube ISO7240CDW (and active reel ISO7240CDWR) has Pin 7 = NC, Pin 10 = EN and fixed default-HIGH output; ISO7240CFDWR repurposes Pin 7 = DISABLE and Pin 10 = CTRL fail-safe select.",
+    "doc": ""
+  },
+  {
+    "src": "DAC7724NB",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/dac7724nb/",
+    "alt": "DAC7725NB",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "PLCC-28 (both Obsolete)",
+    "note": "Identical PLCC-28 pinout, but asynchronous RESET (Pin 6 LOW) clears DAC7724 to mid-scale 800H (0 V in +/-10 V bipolar) vs zero-scale 000H (-10 V in bipolar) on DAC7725; active SOIC-28 DAC7724UB also requires a PCB respin.",
+    "doc": ""
+  },
+  {
+    "src": "UC2846DWTR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/uc2846dwtr/",
+    "alt": "UC3846DWTR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "Conditional Cross",
+    "pkg": "SOIC-16 WB (DW)",
+    "note": "Pin-compatible SOIC-16 PWM controller, but NRND UC2846DWTR is rated -40 to +85 C with +/-1% VREF, whereas Active UC3846DWTR is commercial 0 to +70 C (+/-2% VREF); never use Obsolete UC3847DW (inverted ACTIVE-LOW outputs).",
+    "doc": ""
+  }
+];
+
+function normPn(s) {
+  return String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+export function lookupCrossReference(rawInput) {
+  const s = String(rawInput || '').trim().toUpperCase();
+  if (!s) {
+    return { input: '', ok: false, error: 'Empty input', matches: [], shareUrl: '' };
+  }
+  const q = normPn(s);
+  const matches = [];
+  for (const p of VERIFIED_CROSS_REFERENCES) {
+    const sn = normPn(p.src);
+    const an = normPn(p.alt);
+    if (sn === q || an === q || (q.length >= 4 && (sn.includes(q) || an.includes(q)))) {
+      matches.push({
+        ...p,
+        direction: sn === q || sn.includes(q) ? 'source_to_alt' : 'alt_to_source',
+      });
+    }
+  }
+  return {
+    input: s,
+    ok: matches.length > 0,
+    matches,
+    shareUrl: `https://www.partvane.com/tools/cross-reference/?pn=${encodeURIComponent(s)}`,
+  };
+}

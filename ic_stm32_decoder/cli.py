@@ -13,6 +13,7 @@ from .date_code import (
     decode_onsemi_two_letter,
 )
 from .stm32 import decode_stm32
+from .cross_ref import lookup_cross_reference
 from .top_marking import lookup_top_marking
 
 HELP_TEXT = """ic-stm32-decoder — Zero-dependency IC Date Code & STM32 Part Number Decoder
@@ -24,6 +25,7 @@ Usage:
   python3 -m ic_stm32_decoder nsc <4-digit-code> [--century 2000|1900] [--ref-year YYYY] [--json]
   python3 -m ic_stm32_decoder stm32 <part-number> [--json]
   python3 -m ic_stm32_decoder marking <top-mark-or-mpn> [--json]
+  python3 -m ic_stm32_decoder crossref <mpn> [--json]
 
 Examples:
   python3 -m ic_stm32_decoder 2243
@@ -80,7 +82,7 @@ def _parse_args(argv: list[str]) -> dict[str, Any]:
             positional.append(arg)
         i += 1
 
-    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc", "marking"):
+    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc", "marking", "crossref"):
         opts["mode"] = positional[0].lower()
         opts["target"] = " ".join(positional[1:]) if opts["mode"] == "marking" else "".join(positional[1:])
     elif len(positional) >= 1:
@@ -212,6 +214,18 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if opts["help"] else 1
 
     mode = _detect_mode(opts["target"]) if opts["mode"] == "auto" else opts["mode"]
+    if mode == "crossref":
+        out = lookup_cross_reference(opts["target"])
+        if opts["json"]:
+            print(json.dumps(out, indent=2, ensure_ascii=False))
+        elif not out["ok"]:
+            print(f"Input: {out['input']}\nStatus: NOT IN VERIFIED CROSS-REF TABLE\nWeb Link: {out['shareUrl']}")
+        else:
+            print(f"Input: {out['input']}\nCross-Ref Matches: {len(out['matches'])}")
+            for m in out["matches"]:
+                print(f"  - {m['src']} -> {m['alt']} [{m['verdict']}] ({m['pkg']})\n    Note: {m['note']}\n    Web: {m['srcUrl'] or out['shareUrl']}")
+            print(f"Web Link: {out['shareUrl']}")
+        return 0 if out["ok"] else 1
     if mode == "marking":
         out = lookup_top_marking(opts["target"])
         if opts["json"]:

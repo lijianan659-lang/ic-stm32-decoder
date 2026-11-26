@@ -23,3 +23,8 @@ export {
   VERIFIED_TOP_MARKINGS,
   lookupTopMarking,
 } from './top-marking.js';
+
+export {
+  VERIFIED_CROSS_REFERENCES,
+  lookupCrossReference,
+} from './cross-ref.js';

@@ -5,6 +5,7 @@ import {
   decodeNationalSixWeek,
   decodeStm32,
   lookupTopMarking,
+  lookupCrossReference,
 } from '../src/index.js';
 
 function printHelp() {
@@ -17,6 +18,7 @@ Usage:
   ic-stm32-decoder nsc <4-digit-code> [--century 2000|1900] [--ref-year YYYY] [--json]
   ic-stm32-decoder stm32 <part-number> [--json]
   ic-stm32-decoder marking <top-mark-or-mpn> [--json]
+  ic-stm32-decoder crossref <mpn> [--json]
 
 Examples:
   ic-stm32-decoder 2243
@@ -71,7 +73,7 @@ function parseArgs(argv) {
     }
   }
 
-  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc', 'marking'].includes(positional[0].toLowerCase())) {
+  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc', 'marking', 'crossref'].includes(positional[0].toLowerCase())) {
     opts.mode = positional[0].toLowerCase();
     opts.target = opts.mode === 'marking' ? positional.slice(1).join(' ') : positional.slice(1).join('');
   } else if (positional.length >= 1) {
@@ -204,7 +206,21 @@ if (opts.help || !opts.target) {
 const mode = opts.mode === 'auto' ? detectMode(opts.target) : opts.mode;
 let output;
 
-if (mode === 'marking') {
+if (mode === 'crossref') {
+  output = lookupCrossReference(opts.target);
+  if (opts.json) {
+    console.log(JSON.stringify(output, null, 2));
+  } else if (!output.ok) {
+    console.log(`Input: ${output.input}\nStatus: NOT IN VERIFIED CROSS-REF TABLE\nWeb Link: ${output.shareUrl}`);
+  } else {
+    console.log(`Input: ${output.input}\nCross-Ref Matches: ${output.matches.length}`);
+    for (const m of output.matches) {
+      console.log(`  - ${m.src} -> ${m.alt} [${m.verdict}] (${m.pkg})\n    Note: ${m.note}\n    Web: ${m.srcUrl || output.shareUrl}`);
+    }
+    console.log(`Web Link: ${output.shareUrl}`);
+  }
+  process.exit(output.ok ? 0 : 1);
+} else if (mode === 'marking') {
   output = lookupTopMarking(opts.target);
   if (opts.json) {
     console.log(JSON.stringify(output, null, 2));

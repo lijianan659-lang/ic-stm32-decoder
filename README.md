@@ -17,7 +17,7 @@ Need an instant visual breakdown or a shareable deep link for a BOM review, Slac
 
 | Online Engineering Tool | Direct URL & Shareable Deep-Link Example | What It Does |
 |---|---|---|
-| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match **159** datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `5350MCQ`, `UCC21750Q`, `ISO1042Q1`, `NV7344-3`, `25751D BG`, `TPS 65217C`) + incoming-inspection traps |
+| **Live IC Top Marking & SMD Code Lookup** | https://www.partvane.com/tools/ic-marking-decoder/<br>Example: [`?m=PTSI+2418`](https://www.partvane.com/tools/ic-marking-decoder/?m=PTSI+2418) | Match **180** datasheet-verified cryptic SOT-23/VQFN/WSON/SOIC package markings (`ZAKX`, `PTSI`, `1M3Q`, `15OX`, `5350MCQ`, `UCC21750Q`, `ISO1042Q1`, `NV7344-3`, `25751D BG`, `TPS 65217C`) + incoming-inspection traps |
 | **Live IC Cross-Reference & Trap Checker** | https://www.partvane.com/tools/cross-reference/<br>Example: [`?pn=AMC1200BDWVR`](https://www.partvane.com/tools/cross-reference/?pn=AMC1200BDWVR) | Verify **32** datasheet-backed drop-in vs conditional crosses (`AMC1200B` 8.0 vs `AMC1301` 8.2 gain, `ISO1042Q1` Reinforced vs `BQ1` Basic, `TPS65217C` vs `D` boot rails, `NCV7344-3` VIO vs `-0` NC) |
 | **Live IC Date Code Decoder** | https://www.partvane.com/tools/date-code-decoder/<br>Example: [`?c=2243&century=2000`](https://www.partvane.com/tools/date-code-decoder/?c=2243&century=2000) | Parallel decoding of `YWW`, `YYWW`, `WWYY`, `YYMM`, `YYDDD` Julian, and `YY+` markings into ISO week calendar ranges |
 | **Manufacturer Date Code Formats Reference** | https://www.partvane.com/tools/date-code-formats/ | Full reference tables for **onsemi `AND8002/D`** 12-year two-letter codes and **National Semiconductor `SNOA039C`** 6-week periods |
@@ -252,7 +252,7 @@ npm run test:all
 
 ### 免登录在线交互版
 
-- **在线芯片丝印与 SMD 顶标反查器（159 条原厂丝印）**：https://www.partvane.com/tools/ic-marking-decoder/
+- **在线芯片丝印与 SMD 顶标反查器（180 条原厂丝印）**：https://www.partvane.com/tools/ic-marking-decoder/
 - **在线 IC 料号替代与 Pin-to-Pin 陷阱核对器（32 组对照）**：https://www.partvane.com/tools/cross-reference/
 - **在线 IC 日期码解码器**：https://www.partvane.com/tools/date-code-decoder/
 - **原厂特殊日期码格式速查表（onsemi & National Semi）**：https://www.partvane.com/tools/date-code-formats/
@@ -266,3 +266,9 @@ npm run test:all
 
 - **Disclaimer**: Calendar ranges and decoded fields are engineering references transcribed from public manufacturer documentation (`onsemi AND8002/D Rev. 13`, `National Semiconductor SNOA039C`, and the cited STMicroelectronics datasheets). Always verify critical ratings, pinouts, and marking diagrams against the latest official manufacturer document. **A plausible date code or valid-looking ordering code never authenticates a semiconductor device.** PartVane is an independent electronic component distributor and is not an authorized distributor of the manufacturers referenced herein; all product names and trademarks belong to their respective owners.
 - **License**: Released under the [MIT License](./LICENSE).
+
+## Obsolete & NRND Industrial Migration Guides
+
+- [Discontinued PLCC & Through-Hole PDIP Industrial ICs Sourcing Guide (DAC7724NB, TLC2543IFN, MC33153PG, MC34152PG, TPIC6B595N)](https://www.partvane.com/obsolete/plcc-pdip-discontinued-industrial-ics/)
+- [MCP2551 NRND Replacement Guide: Pin 5 VREF vs SPLIT vs VIO Traps Across MCP2561, MCP2562, TCAN1057A & NCV7356](https://www.partvane.com/blog/mcp2551-vs-mcp2561-vs-tcan1057a-can-replacement/)
+- [Industrial NRND & Obsolete Tube Guide: TI TLK110PT EtherCAT PHY, DS90CR286 LVDS, ISO7240CDW & UC2846DWTR](https://www.partvane.com/blog/tlk110pt-nrnd-industrial-ethernet-lvds-sourcing/)

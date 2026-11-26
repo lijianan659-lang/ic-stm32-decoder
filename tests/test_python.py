@@ -13,11 +13,13 @@ if str(ROOT) not in sys.path:
 from ic_stm32_decoder import (  # noqa: E402
     NSC_SNOA039C_PERIODS,
     ONSEMI_AND8002_TABLE,
+    VERIFIED_CROSS_REFERENCES,
     VERIFIED_TOP_MARKINGS,
     decode_date_code,
     decode_national_six_week,
     decode_onsemi_two_letter,
     decode_stm32,
+    lookup_cross_reference,
     lookup_top_marking,
     iso_week_range,
     iso_weeks_in_year,
@@ -176,11 +178,18 @@ class TestIcStm32Decoder(unittest.TestCase):
             ["marking", "25751D", "BG", "--json"],
             ["marking", "NV7344-3", "--json"],
             ["marking", "TPS", "65217C", "--json"],
+            ["marking", "1GI", "2418", "--json"],
+            ["marking", "YF08E", "--json"],
+            ["crossref", "MCP2551-I/SN", "--json"],
+            ["crossref", "DAC7724NB", "--json"],
         ]
-        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 159)
+        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 180)
+        self.assertEqual(len(VERIFIED_CROSS_REFERENCES), 36)
         self.assertEqual(lookup_top_marking("25751D BG")["matches"][0]["mpn"], "TPS25751DREFR")
         self.assertEqual(lookup_top_marking("NV7344-3")["matches"][0]["mpn"], "NCV7344MW3R2G")
         self.assertEqual(lookup_top_marking("TPS 65217C")["matches"][0]["mpn"], "TPS65217CRSLR")
+        self.assertEqual(lookup_top_marking("1GI 2418")["matches"][0]["mpn"], "TPS61023DRLR")
+        self.assertEqual(lookup_cross_reference("MCP2551-I/SN")["matches"][0]["alt"], "TCAN1057AVDRQ1")
         node_bin = ROOT / "bin" / "ic-stm32-decoder.js"
         for args in cases:
             py_run = subprocess.run(

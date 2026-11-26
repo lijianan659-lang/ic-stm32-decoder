@@ -15,6 +15,8 @@ import {
   decodeStm32,
   VERIFIED_TOP_MARKINGS,
   lookupTopMarking,
+  VERIFIED_CROSS_REFERENCES,
+  lookupCrossReference,
 } from '../src/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -294,7 +296,7 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   assert.equal(ncv.ok, true);
   assert.equal(ncv.matches[0].mpn, 'NCV7446MW0R2G');
 
-  assert.equal(VERIFIED_TOP_MARKINGS.length, 159);
+  assert.equal(VERIFIED_TOP_MARKINGS.length, 180);
 
   const pd25751 = lookupTopMarking('25751D BG');
   assert.equal(pd25751.ok, true);
@@ -307,4 +309,29 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   const pmic65217 = lookupTopMarking('TPS 65217C');
   assert.equal(pmic65217.ok, true);
   assert.equal(pmic65217.matches[0].mpn, 'TPS65217CRSLR');
+
+  const boost1gi = lookupTopMarking('1GI 2418');
+  assert.equal(boost1gi.ok, true);
+  assert.equal(boost1gi.matches[0].mpn, 'TPS61023DRLR');
+  assert.deepEqual(boost1gi.dateTokens, ['2418']);
+
+  const yf08e = lookupTopMarking('YF08E');
+  assert.equal(yf08e.ok, true);
+  assert.match(yf08e.matches[0].mpn, /TXS0108EPWR/);
+
+  const y2543 = lookupTopMarking('Y2543');
+  assert.equal(y2543.ok, true);
+  assert.match(y2543.matches[0].mpn, /TLC2543/);
+});
+
+test('IC Cross-Reference lookup resolves drop-in vs NOT Drop-In substitution traps', () => {
+  assert.equal(VERIFIED_CROSS_REFERENCES.length, 36);
+  const mcp = lookupCrossReference('MCP2551-I/SN');
+  assert.equal(mcp.ok, true);
+  assert.equal(mcp.matches[0].alt, 'TCAN1057AVDRQ1');
+  assert.match(mcp.matches[0].note, /VREF|VIO/);
+
+  const dac = lookupCrossReference('DAC7724NB');
+  assert.equal(dac.ok, true);
+  assert.match(dac.matches[0].verdict, /NOT Drop-In/);
 });

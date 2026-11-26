@@ -1,5 +1,6 @@
-"""ic-stm32-decoder: Zero-dependency IC Date Code & STM32 Part Number Decoder."""
+"""ic-stm32-decoder: Zero-dependency IC Top Marking, Cross-Reference, Date Code & STM32 Decoder."""
 
+from .cross_ref import VERIFIED_CROSS_REFERENCES, lookup_cross_reference
 from .date_code import (
     NSC_SNOA039C_PERIODS,
     ONSEMI_AND8002_TABLE,
@@ -12,7 +13,6 @@ from .date_code import (
     iso_weeks_in_year,
     lookup_national_period,
 )
-from .top_marking import VERIFIED_TOP_MARKINGS, lookup_top_marking
 from .stm32 import (
     STM32_FAMILIES,
     STM32_GENERIC_TABLE,
@@ -20,8 +20,9 @@ from .stm32 import (
     clean_stm32_input,
     decode_stm32,
 )
+from .top_marking import VERIFIED_TOP_MARKINGS, lookup_top_marking
 
-__version__ = "1.4.0"
+__version__ = "1.5.0"
 
 __all__ = [
     "__version__",
@@ -42,4 +43,6 @@ __all__ = [
     "decode_stm32",
     "VERIFIED_TOP_MARKINGS",
     "lookup_top_marking",
+    "VERIFIED_CROSS_REFERENCES",
+    "lookup_cross_reference",
 ]
