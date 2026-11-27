@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ic-stm32-decoder"
-version = "1.6.0"
-description = "Zero-dependency IC top marking lookup (159 SMD codes), IC date code & lot marking decoder (YWW, YYWW, WWYY, YYMM, YYDDD Julian, onsemi AND8002/D, National Semi SNOA039C), and datasheet-backed STM32 part number decoder."
+version = "1.7.0"
+description = "Zero-dependency IC top marking lookup (210 SMD codes), cross-reference trap checker (48 pairs), SMD IC package dimensions (16 JEDEC/EIAJ outlines), IC date code decoder, and STM32 part number decoder."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
@@ -45,6 +45,7 @@ Repository = "https://github.com/lijianan659-lang/ic-stm32-decoder"
 "IC MSL Bake Calculator" = "https://www.partvane.com/tools/msl-calculator/"
 "AEC-Q100 Automotive Suffix Decoder" = "https://www.partvane.com/tools/aec-q100-grade-decoder/"
 "IC Cross-Reference & Trap Checker" = "https://www.partvane.com/tools/cross-reference/"
+"SMD IC Package Dimensions" = "https://www.partvane.com/tools/ic-package-dimensions/"
 
 [project.scripts]
 ic-stm32-decoder = "ic_stm32_decoder.cli:main"

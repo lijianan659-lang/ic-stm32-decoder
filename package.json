@@ -1,14 +1,16 @@
 {
   "name": "ic-stm32-decoder",
-  "version": "1.6.0",
-  "description": "Zero-dependency IC top marking (194 codes), cross-reference trap checker (42 pairs), YYWW/Julian/onsemi/NSC date code & STM32 decoder.",
+  "version": "1.7.0",
+  "description": "Zero-dependency IC top marking (210 codes), cross-reference trap checker (48 pairs), SMD package dimensions (16 outlines), YYWW/Julian/onsemi/NSC date code & STM32 decoder.",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js",
     "./date-code": "./src/date-code.js",
     "./stm32": "./src/stm32.js",
-    "./top-marking": "./src/top-marking.js"
+    "./top-marking": "./src/top-marking.js",
+    "./cross-ref": "./src/cross-ref.js",
+    "./package-dim": "./src/package-dim.js"
   },
   "bin": {
     "ic-stm32-decoder": "./bin/ic-stm32-decoder.js"

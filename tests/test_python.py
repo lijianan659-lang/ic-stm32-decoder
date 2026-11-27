@@ -14,12 +14,14 @@ from ic_stm32_decoder import (  # noqa: E402
     NSC_SNOA039C_PERIODS,
     ONSEMI_AND8002_TABLE,
     VERIFIED_CROSS_REFERENCES,
+    VERIFIED_PACKAGE_DIMENSIONS,
     VERIFIED_TOP_MARKINGS,
     decode_date_code,
     decode_national_six_week,
     decode_onsemi_two_letter,
     decode_stm32,
     lookup_cross_reference,
+    lookup_package_dimensions,
     lookup_top_marking,
     iso_week_range,
     iso_weeks_in_year,
@@ -180,16 +182,24 @@ class TestIcStm32Decoder(unittest.TestCase):
             ["marking", "TPS", "65217C", "--json"],
             ["marking", "1GI", "2418", "--json"],
             ["marking", "YF08E", "--json"],
+            ["marking", "UB913SQ", "2518", "--json"],
+            ["marking", "C15", "--json"],
             ["crossref", "MCP2551-I/SN", "--json"],
             ["crossref", "DAC7724NB", "--json"],
+            ["crossref", "DS90UB913QSQ/NOPB", "--json"],
+            ["package", "SOIC-8", "--json"],
         ]
-        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 194)
-        self.assertEqual(len(VERIFIED_CROSS_REFERENCES), 42)
+        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 210)
+        self.assertEqual(len(VERIFIED_CROSS_REFERENCES), 48)
+        self.assertEqual(len(VERIFIED_PACKAGE_DIMENSIONS), 16)
         self.assertEqual(lookup_top_marking("25751D BG")["matches"][0]["mpn"], "TPS25751DREFR")
         self.assertEqual(lookup_top_marking("NV7344-3")["matches"][0]["mpn"], "NCV7344MW3R2G")
         self.assertEqual(lookup_top_marking("TPS 65217C")["matches"][0]["mpn"], "TPS65217CRSLR")
         self.assertEqual(lookup_top_marking("1GI 2418")["matches"][0]["mpn"], "TPS61023DRLR")
+        self.assertIn("DS90UB913QSQ/NOPB", lookup_top_marking("UB913SQ 2518")["matches"][0]["mpn"])
         self.assertEqual(lookup_cross_reference("MCP2551-I/SN")["matches"][0]["alt"], "TCAN1057AVDRQ1")
+        self.assertEqual(lookup_cross_reference("DS90UB913QSQ/NOPB")["matches"][0]["alt"], "DS90UB913ATRTVRQ1")
+        self.assertTrue(lookup_package_dimensions("SOIC-8", family="soic")["ok"])
         node_bin = ROOT / "bin" / "ic-stm32-decoder.js"
         for args in cases:
             py_run = subprocess.run(

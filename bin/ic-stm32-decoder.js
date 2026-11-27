@@ -6,6 +6,7 @@ import {
   decodeStm32,
   lookupTopMarking,
   lookupCrossReference,
+  lookupPackageDimensions,
 } from '../src/index.js';
 
 function printHelp() {
@@ -19,6 +20,7 @@ Usage:
   ic-stm32-decoder stm32 <part-number> [--json]
   ic-stm32-decoder marking <top-mark-or-mpn> [--json]
   ic-stm32-decoder crossref <mpn> [--json]
+  ic-stm32-decoder package <pkg-or-mpn> [--json]
 
 Examples:
   ic-stm32-decoder 2243
@@ -26,11 +28,12 @@ Examples:
   ic-stm32-decoder GJ
   ic-stm32-decoder nsc 0012
   ic-stm32-decoder STM32F103C8T6
-  ic-stm32-decoder STM32G030F6P6TR
+  ic-stm32-decoder package SOIC-8
 
 Interactive Web Tools (No Sign-up):
   IC Top Marking Lookup:    https://www.partvane.com/tools/ic-marking-decoder/
   IC Cross-Reference Tool:  https://www.partvane.com/tools/cross-reference/
+  SMD Package Dimensions:   https://www.partvane.com/tools/ic-package-dimensions/
   IC Date Code Decoder:     https://www.partvane.com/tools/date-code-decoder/
   Marking Formats Guide:    https://www.partvane.com/tools/date-code-formats/
   STM32 Part Decoder:       https://www.partvane.com/tools/stm32-part-number-decoder/
@@ -73,9 +76,9 @@ function parseArgs(argv) {
     }
   }
 
-  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc', 'marking', 'crossref'].includes(positional[0].toLowerCase())) {
+  if (positional.length >= 2 && ['date', 'stm32', 'onsemi', 'nsc', 'marking', 'crossref', 'package'].includes(positional[0].toLowerCase())) {
     opts.mode = positional[0].toLowerCase();
-    opts.target = opts.mode === 'marking' ? positional.slice(1).join(' ') : positional.slice(1).join('');
+    opts.target = ['marking', 'package'].includes(opts.mode) ? positional.slice(1).join(' ') : positional.slice(1).join('');
   } else if (positional.length >= 1) {
     opts.target = positional.join('');
   }
@@ -206,7 +209,21 @@ if (opts.help || !opts.target) {
 const mode = opts.mode === 'auto' ? detectMode(opts.target) : opts.mode;
 let output;
 
-if (mode === 'crossref') {
+if (mode === 'package') {
+  output = lookupPackageDimensions(opts.target);
+  if (opts.json) {
+    console.log(JSON.stringify(output, null, 2));
+  } else if (!output.ok) {
+    console.log(`Query: ${output.query}\nStatus: NO PACKAGE OUTLINE MATCH\nWeb Link: ${output.shareUrl}`);
+  } else {
+    console.log(`Query: ${output.query}\nPackage Outlines: ${output.count}`);
+    for (const m of output.matches) {
+      console.log(`  - ${m.name} [${m.standard}] — Body: ${m.body}, Span: ${m.leadSpan}, Pitch: ${m.pitch}\n    Codes: ${m.codes}\n    Trap: ${m.trap}`);
+    }
+    console.log(`Web Link: ${output.shareUrl}`);
+  }
+  process.exit(output.ok ? 0 : 1);
+} else if (mode === 'crossref') {
   output = lookupCrossReference(opts.target);
   if (opts.json) {
     console.log(JSON.stringify(output, null, 2));

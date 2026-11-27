@@ -2136,6 +2136,182 @@ export const VERIFIED_TOP_MARKINGS = [
     "trap": "60 V (85 V max) bidirectional 4-switch buck-boost controller; HTSSOP-38 DCP is MSL Level-3 (168-hour floor life).",
     "pageUrl": "https://www.partvane.com/parts/texas-instruments/lm5177dcpr/",
     "datasheetUrl": "https://www.ti.com/lit/ds/symlink/lm5177.pdf"
+  },
+  {
+    "mark": "UB913SQ",
+    "mpn": "DS90UB913QSQ/NOPB / DS90UB913QSQE/NOPB",
+    "mfr": "Texas Instruments",
+    "pkg": "WQFN-32 (RTV, 5x5 mm)",
+    "kind": "Truncated MPN",
+    "src": "TI SNLS420D POA (10-Nov-2025)",
+    "trap": "10-100 MHz STP FPD-Link III serializer (AEC-Q100 Grade 2, MSL 3); UB913AQ (DS90UB913A-Q1) requires >=25 MHz PCLK and fails below 25 MHz!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/ds90ub913qsq-nopb/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ds90ub913q-q1.pdf"
+  },
+  {
+    "mark": "UB914QSQ",
+    "mpn": "DS90UB914QSQ/NOPB / DS90UB914QSQE/NOPB",
+    "mfr": "Texas Instruments",
+    "pkg": "WQFN-48 (RHS, 7x7 mm)",
+    "kind": "Truncated MPN",
+    "src": "TI SNLS420D POA (10-Nov-2025)",
+    "trap": "10-100 MHz 2:1 mux FPD-Link III deserializer (MSL 3); UB914AQ (DS90UB914A-Q1) starts at 25 MHz min PCLK.",
+    "pageUrl": "https://www.partvane.com/blog/ds90ub913q-vs-ds90ub913a-ds90ub914q-fpd-link-iii-guide/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ds90ub914q-q1.pdf"
+  },
+  {
+    "mark": "UB913AQ",
+    "mpn": "DS90UB913ATRTVRQ1 / DS90UB913ATRTVJQ1",
+    "mfr": "Texas Instruments",
+    "pkg": "WQFN-32 (RTV, 5x5 mm)",
+    "kind": "Truncated MPN",
+    "src": "TI SNLS443G POA (9-Nov-2025)",
+    "trap": "25-100 MHz Coax/PoC + STP FPD-Link III serializer (MSL 3); NOT drop-in for UB913SQ on 10-24 MHz low-PCLK imagers!",
+    "pageUrl": "https://www.partvane.com/blog/ds90ub913q-vs-ds90ub913a-ds90ub914q-fpd-link-iii-guide/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ds90ub913a-q1.pdf"
+  },
+  {
+    "mark": "UB914AQ",
+    "mpn": "DS90UB914ATRHSRQ1 / DS90UB914ATRHSJQ1",
+    "mfr": "Texas Instruments",
+    "pkg": "WQFN-48 (RHS, 7x7 mm)",
+    "kind": "Truncated MPN",
+    "src": "TI SNLS499D POA (10-Nov-2025)",
+    "trap": "25-100 MHz Coax/PoC + STP FPD-Link III deserializer (MSL 3); cannot lock below 25 MHz where UB914QSQ operates.",
+    "pageUrl": "https://www.partvane.com/blog/ds90ub913q-vs-ds90ub913a-ds90ub914q-fpd-link-iii-guide/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/ds90ub914a-q1.pdf"
+  },
+  {
+    "mark": "C15",
+    "mpn": "LMV7219M7/NOPB / LMV7219M7X/NOPB",
+    "mfr": "Texas Instruments",
+    "pkg": "SC-70-5 (DCK, 2.0x1.25 mm)",
+    "kind": "Cryptic SMD",
+    "src": "TI SNOS458I POA (7-Aug-2026)",
+    "trap": "3-char cryptic mark C15 = 7 ns comparator LMV7219 in SC-70-5 (MSL 1); SOT-23-5 sibling LMV7219M5/NOPB marks C14A!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/lmv7219m7-nopb/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/lmv7219.pdf"
+  },
+  {
+    "mark": "C14A",
+    "mpn": "LMV7219M5/NOPB / LMV7219M5X/NOPB",
+    "mfr": "Texas Instruments",
+    "pkg": "SOT-23-5 (DBV, 2.88x1.60 mm)",
+    "kind": "Cryptic SMD",
+    "src": "TI SNOS458I POA (7-Aug-2026)",
+    "trap": "SOT-23-5 version of LMV7219 (0.95 mm pitch); will NOT fit smaller 2.0x1.25 mm SC-70-5 (C15) PCB pads.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/lmv7219m7-nopb/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/lmv7219.pdf"
+  },
+  {
+    "mark": "I7220B",
+    "mpn": "ISO7220BDR (Active) / ISO7220BD (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-8 (D)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLS755U POA (29-Oct-2026)",
+    "trap": "5 Mbps TTL noise-filtered same-direction dual isolator; I7221B reverses Channel A, and I7220M (150 Mbps CMOS) removes the input noise filter!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso7220bd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso7220c.pdf"
+  },
+  {
+    "mark": "I7220C",
+    "mpn": "ISO7220CDR",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-8 (D)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLS755U POA (29-Oct-2026)",
+    "trap": "25 Mbps TTL noise-filtered dual same-direction isolator (supports 2.8 V, 3.3 V & 5 V rails; MSL 1).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso7220bd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso7220c.pdf"
+  },
+  {
+    "mark": "I7220M",
+    "mpn": "ISO7220MDR (Active) / ISO7220MD (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-8 (D)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLS755U POA (29-Oct-2026)",
+    "trap": "150 Mbps CMOS VCC/2 threshold variant WITHOUT input noise filter — passes narrow noise spikes rejected by TTL I7220A/B/C!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/iso7220bd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/iso7220c.pdf"
+  },
+  {
+    "mark": "LB176Q",
+    "mpn": "SN65LBC176QDR (Active) / SN65LBC176QD (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-8 (D)",
+    "kind": "Cryptic SMD",
+    "src": "TI SLLS067I POA (18-Sep-2026)",
+    "trap": "Q-Temp -40 to +125 C RS-485 transceiver (QDRG4 may mark J176Q1 or LB176Q); non-Q 6LB176 is -40..85 C and Obsolete 7LB176 is 0..70 C.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/sn65lbc176qd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/sn65lbc176.pdf"
+  },
+  {
+    "mark": "6LB176",
+    "mpn": "SN65LBC176DR",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-8 (D)",
+    "kind": "Cryptic SMD",
+    "src": "TI SLLS067I POA (18-Sep-2026)",
+    "trap": "Industrial -40 to +85 C SN65LBC176DR; cannot substitute for +125 C Q-Temp LB176Q (SN65LBC176QDR).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/sn65lbc176qd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/sn65lbc176.pdf"
+  },
+  {
+    "mark": "LB180",
+    "mpn": "SN75LBC180RSAT (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "QFN-16 (RSA, 4x4 mm)",
+    "kind": "Cryptic SMD",
+    "src": "TI SLLS174I POA (26-Mar-2026)",
+    "trap": "Obsolete commercial 0..70 C full-duplex RS-485 in QFN-16; Active -40..85 C QFN-16 SN65LBC180RSAR swaps first two letters to BL180!",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/sn75lbc180rsat/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/sn65lbc180.pdf"
+  },
+  {
+    "mark": "BL180",
+    "mpn": "SN65LBC180RSAR",
+    "mfr": "Texas Instruments",
+    "pkg": "QFN-16 (RSA, 4x4 mm)",
+    "kind": "Cryptic SMD",
+    "src": "TI SLLS174I POA (26-Mar-2026)",
+    "trap": "Active -40 to +85 C QFN-16 full-duplex RS-485 (MSL 2); drop-in wide-temp upgrade for Obsolete 0..70 C LB180 (SN75LBC180RSAT).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/sn75lbc180rsat/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/sn65lbc180.pdf"
+  },
+  {
+    "mark": "26LS32AC",
+    "mpn": "AM26LS32ACDR (Active) / AM26LS32ACD (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "SOIC-16 Narrow (D, 3.91 mm)",
+    "kind": "Truncated MPN",
+    "src": "TI SLLS115G POA (18-Sep-2026)",
+    "trap": "0..70 C narrow SOIC-16 quad RS-422 receiver; -40..85 C industrial marks 26LS32AI, wide 5.30 mm SOP-16 marks 26LS32A, TSSOP-16 marks SA32A.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/am26ls32acd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/am26ls32a.pdf"
+  },
+  {
+    "mark": "SA32A",
+    "mpn": "AM26LS32ACPWR (Active) / AM26LS32ACPW (Obsolete)",
+    "mfr": "Texas Instruments",
+    "pkg": "TSSOP-16 (PW, 5.0x4.4 mm)",
+    "kind": "Cryptic SMD",
+    "src": "TI SLLS115G POA (18-Sep-2026)",
+    "trap": "0.65 mm pitch TSSOP-16 commercial (0..70 C) quad RS-422 receiver (MSL 1); tube ACPW is Obsolete while 2000/reel ACPWR is Active.",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/am26ls32acd/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/am26ls32a.pdf"
+  },
+  {
+    "mark": "F28035PNQ",
+    "mpn": "TMS320F28035PNQ / TMS320F28035PNQR",
+    "mfr": "Texas Instruments",
+    "pkg": "LQFP-80 (PN, 12x12 mm)",
+    "kind": "Two-line SMD",
+    "src": "TI SPRS584Q POA (7-Nov-2025)",
+    "trap": "AEC-Q100 -40..125 C C2000 Piccolo MCU (MSL 3); F28035PNS is non-automotive -40..125 C and F28035PNT is -40..105 C ('PNTQ' is a buyer typo).",
+    "pageUrl": "https://www.partvane.com/parts/texas-instruments/tms320f28035pnq/",
+    "datasheetUrl": "https://www.ti.com/lit/ds/symlink/tms320f28035.pdf"
   }
 ];
 

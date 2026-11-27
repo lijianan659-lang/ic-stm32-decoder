@@ -17,6 +17,8 @@ import {
   lookupTopMarking,
   VERIFIED_CROSS_REFERENCES,
   lookupCrossReference,
+  VERIFIED_PACKAGE_DIMENSIONS,
+  lookupPackageDimensions,
 } from '../src/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -296,7 +298,7 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   assert.equal(ncv.ok, true);
   assert.equal(ncv.matches[0].mpn, 'NCV7446MW0R2G');
 
-  assert.equal(VERIFIED_TOP_MARKINGS.length, 194);
+  assert.equal(VERIFIED_TOP_MARKINGS.length, 210);
 
   const pd25751 = lookupTopMarking('25751D BG');
   assert.equal(pd25751.ok, true);
@@ -322,10 +324,19 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   const y2543 = lookupTopMarking('Y2543');
   assert.equal(y2543.ok, true);
   assert.match(y2543.matches[0].mpn, /TLC2543/);
+
+  const ub913 = lookupTopMarking('UB913SQ 2518');
+  assert.equal(ub913.ok, true);
+  assert.match(ub913.matches[0].mpn, /DS90UB913QSQ\/NOPB/);
+  assert.deepEqual(ub913.dateTokens, ['2518']);
+
+  const c15 = lookupTopMarking('C15');
+  assert.equal(c15.ok, true);
+  assert.match(c15.matches[0].mpn, /LMV7219M7\/NOPB/);
 });
 
 test('IC Cross-Reference lookup resolves drop-in vs NOT Drop-In substitution traps', () => {
-  assert.equal(VERIFIED_CROSS_REFERENCES.length, 42);
+  assert.equal(VERIFIED_CROSS_REFERENCES.length, 48);
   const mcp = lookupCrossReference('MCP2551-I/SN');
   assert.equal(mcp.ok, true);
   assert.equal(mcp.matches[0].alt, 'TCAN1057AVDRQ1');
@@ -334,4 +345,22 @@ test('IC Cross-Reference lookup resolves drop-in vs NOT Drop-In substitution tra
   const dac = lookupCrossReference('DAC7724NB');
   assert.equal(dac.ok, true);
   assert.match(dac.matches[0].verdict, /NOT Drop-In/);
+
+  const fpd = lookupCrossReference('DS90UB913QSQ/NOPB');
+  assert.equal(fpd.ok, true);
+  assert.equal(fpd.matches[0].alt, 'DS90UB913ATRTVRQ1');
+  assert.match(fpd.matches[0].note, /25 MHz/);
+});
+
+test('SMD IC Package Dimensions lookup resolves JEDEC vs EIAJ width traps', () => {
+  assert.equal(VERIFIED_PACKAGE_DIMENSIONS.length, 16);
+  const soic8 = lookupPackageDimensions('SOIC-8', { family: 'soic' });
+  assert.equal(soic8.ok, true);
+  assert.equal(soic8.count >= 3, true);
+  assert.equal(soic8.matches.some((m) => m.id === 'soic8-n'), true);
+  assert.equal(soic8.matches.some((m) => m.id === 'sop8-208'), true);
+
+  const sc70 = lookupPackageDimensions('LMV7219M7/NOPB');
+  assert.equal(sc70.ok, true);
+  assert.equal(sc70.matches[0].id, 'sc70-dck');
 });

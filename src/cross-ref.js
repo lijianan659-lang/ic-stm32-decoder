@@ -9,7 +9,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "Wide SOIC-8 (DWV)",
     "note": "Identical DWV-8 pinout and +/-250 mV shunt input, but AMC1200B has fixed gain 8.0 V/V while AMC1301 has fixed gain 8.2 V/V (causes 2.5% current-loop gain error unless scaled in firmware). Also check MSL 2 (DWVR) vs MSL 3 (AMC1301DWVR / DUBR) vs MSL 4 (AMC1200BDUB).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/amc1200-vs-amc1301-vs-amc3330/"
   },
   {
     "src": "INA128UA/2K5",
@@ -45,7 +45,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Conditional Cross",
     "pkg": "SOIC-16 WB (DW)",
     "note": "Same SOIC-16 pinout, 5 Mbps CAN FD and +/-70 V bus protection, but ISO1042Q1 is Reinforced isolation (10,000 VPK surge) whereas ISO1042BQ1 is Basic isolation (6,000 VPK surge). Never downgrade safety-rated BOMs from Reinforced to Basic.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/iso1042-vs-iso1050-vs-tcan1042-can-fd/"
   },
   {
     "src": "TCAN1057AVDRQ1",
@@ -57,7 +57,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-8 (D)",
     "note": "V-suffix (marking 1057AV) routes 1.7-5.5 V VIO level-shifter supply to Pin 5; non-V TCAN1057A leaves Pin 5 NC. Leaving Pin 5 floating on a V-part locks out TXD/RXD communication.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/iso1042-vs-iso1050-vs-tcan1042-can-fd/"
   },
   {
     "src": "NCV7344MW3R2G",
@@ -69,7 +69,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "DFNW8 (Case 507AB)",
     "note": "-3 variants (mark NV7344-3) wire Pin 5 to VIO for 3-5 V MCU interfacing; -0 variants (mark NV7344-0) leave Pin 5 NC and break 3.3 V logic translation.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/iso1042-vs-iso1050-vs-tcan1042-can-fd/"
   },
   {
     "src": "TPS65217CRSLR",
@@ -93,7 +93,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Pin-Compatible",
     "pkg": "SOIC-16 WB (DW)",
     "note": "Per TI SLUSDH9D addendum (Aug 2025), tube option UCC21750QDWQ1 is OBSOLETE; UCC21750QDWRQ1 (2000/reel) is the identical Active Production silicon (marking UCC21750Q, MSL 3).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/ucc21750-vs-ucc5350-vs-ncv5705-gate-drivers/"
   },
   {
     "src": "DAC7760IPWPR",
@@ -129,7 +129,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "QFN48 (6x6) vs QFN40 (5x5)",
     "note": "Different package footprints and radios: ESP32-C5HF4 adds 5 GHz Wi-Fi 6, 802.15.4 Thread/Zigbee and dual CAN FD (QFN48), whereas ESP32-C61HF4 is 2.4 GHz Wi-Fi 6 + SDIO 2.0 slave (QFN40).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/esp32-c5-vs-esp32-c61/"
   },
   {
     "src": "ESP32-C5HF4",
@@ -141,7 +141,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "QFN48 (6x6 mm)",
     "note": "HF4 integrates 4 MB internal SPI flash with zero PSRAM, whereas HR2/HR8 integrate 2 MB / 8 MB PSRAM and NO internal flash (external flash IC required on PCB).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/esp32-c5-vs-esp32-c61/"
   },
   {
     "src": "ESP32-P4NRW32X",
@@ -201,7 +201,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Pin-Compatible",
     "pkg": "PDIP-14",
     "note": "Cross-brand HCT14 DIP-14 equivalent for obsolete Samsung KS74HCTLS14N. Never substitute 74HC14 (CMOS threshold) for 74HCT14 (TTL threshold) on 3.3 V-to-5 V interfaces.",
-    "doc": ""
+    "doc": "https://www.partvane.com/obsolete/samsung-ks74hctls14n-schmitt-inverter/"
   },
   {
     "src": "TJA1021T/20",
@@ -213,7 +213,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SO8 (T)",
     "note": "Identical SO8 footprint, but /20 is normal-slope 20 kBd LIN while /10 is low-slope 10.4 kBd (SAE J2602). In NXP Rev. 9, TJA1021BT corresponds to /20 and TJA1021AT to /10.",
-    "doc": ""
+    "doc": "https://www.partvane.com/obsolete/nxp-tja1021t-lin-transceiver/"
   },
   {
     "src": "4608X-102-103LF",
@@ -225,7 +225,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "8-pin SIP",
     "note": "Identical 8-SIP package body, but 102 is 4 isolated resistors (300 mW/el) while 101 is 7 bussed resistors sharing Pin 1 common (200 mW/el). Never substitute without schematic check.",
-    "doc": ""
+    "doc": "https://www.partvane.com/obsolete/bourns-4608x-resistor-networks/"
   },
   {
     "src": "SMBJ7.5A",
@@ -237,7 +237,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Pin-Compatible",
     "pkg": "SMB (DO-214AA)",
     "note": "Both are unidirectional 7.5 V standoff SMB TVS diodes (A = unidirectional; CA = bidirectional). Never substitute bidirectional CA for unidirectional A without verifying reverse clamping.",
-    "doc": ""
+    "doc": "https://www.partvane.com/obsolete/smbj7-5a-1smb7-5at3g-tvs/"
   },
   {
     "src": "CH340G",
@@ -249,7 +249,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-16 vs QFN-28",
     "note": "Functional USB-to-UART cross at board-design level only: CH340G uses SOIC-16 + external 12 MHz crystal (no EEPROM), while CP2102-GMR uses QFN-28 (crystal-less, internal EEPROM, different drivers).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/ch340g-vs-cp2102/"
   },
   {
     "src": "STM32F103C8T6",
@@ -261,7 +261,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Pin-Compatible",
     "pkg": "LQFP-48",
     "note": "Medium-density 128 KB flash upgrade (CB) for 64 KB STM32F103C8T6 in identical LQFP-48 pinout; 32 KB C6T6 (low-density) drops peripherals and smaller flash.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/stm32f103c8t6-alternatives/"
   },
   {
     "src": "TCAN1042HGVDR",
@@ -273,7 +273,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Conditional Cross",
     "pkg": "SOIC-8",
     "note": "TJA1050T is classic 1 Mbps CAN with Pin 8 = Silent mode (S); TCAN1042HGVDR supports 5 Mbps CAN FD with Pin 8 = VIO level shifter. Never cross Pin 8 without checking the schematic.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/tcan1042-vs-tcan1042h-vs-hgv/"
   },
   {
     "src": "LM358DR",
@@ -285,7 +285,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Pin-Compatible",
     "pkg": "SOIC-8 (D)",
     "note": "B-generation upgrade (mark LM358B): raises supply rating from 30/32 V to 36 V, widens temp to -40..+85 C (vs 0..70 C on LM358DR) and cuts VOS to 3 mV max. For +125 C use LM2904BIDR.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/lm358-vs-lm2904-vs-lm393/"
   },
   {
     "src": "LM2596S-5.0/NOPB",
@@ -297,7 +297,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "DDPAK vs TO-220",
     "note": "LM2596 switches at 150 kHz (smaller inductor) while LM2576 switches at 52 kHz (requires ~3x larger inductance); also DDPAK SMD vs TO-220 through-hole.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/lm2596-vs-lm2576/"
   },
   {
     "src": "TPS62130RGTR",
@@ -309,7 +309,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Conditional Cross",
     "pkg": "VQFN-16 (RGT, 3x3 mm)",
     "note": "TPS62130RGTR (mark PTSI) pulls PG low when EN=Low, whereas TPS62130ARGTR (mark PA6I) leaves PG high-Z when EN=Low. Do not confuse with fixed 1.8/2.5/3.3 V TPS62131/32/33.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/tps62130rgtr-marking-msl-variants/"
   },
   {
     "src": "SN65HVD230DR",
@@ -357,7 +357,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "TSSOP-20 (PW)",
     "note": "Both are 20-pin octal buffers, but SN74HC244 is unidirectional dual 4-bit (two /OE pins), whereas SN74HC245 is bidirectional 8-bit transceiver (DIR + /OE, flow-through pinout).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/sn74hc244-vs-sn74hc245/"
   },
   {
     "src": "W25Q128JVSIQ",
@@ -369,7 +369,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-8 vs PDIP-8",
     "note": "Completely different memory buses: W25Q128JV is 128 Mbit (16 MB) 3.3 V SPI NOR flash while 24LC256 is 256 Kbit (36 KB) 2.5-5.5 V I2C EEPROM — never interchangeable.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/w25q128jv-vs-24lc256/"
   },
   {
     "src": "MAX6675ISA+",
@@ -381,7 +381,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-8 vs TQFN-20",
     "note": "Different temperature sensor families: MAX6675 is Type-K thermocouple-to-digital (0..1024 C, SOIC-8), whereas MAX31865 is PT100/PT1000 RTD-to-digital (TQFN-20/SSOP-20).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/max6675-vs-max31865/"
   },
   {
     "src": "MCP2551-I/SN",
@@ -393,7 +393,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Conditional Cross",
     "pkg": "SOIC-8 (150 mil)",
     "note": "MCP2551 (NRND) outputs VDD/2 VREF on Pin 5 and uses an analog slope resistor on Pin 8 (RS); TCAN1057AV requires 1.8-5.5 V VIO supply on Pin 5 (use non-V TCAN1057A if Pin 5 floats) and digital S silent-mode input on Pin 8.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/iso1042-vs-iso1050-vs-tcan1042-can-fd/"
   },
   {
     "src": "ISO7240CDW",
@@ -441,7 +441,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "Conditional Cross",
     "pkg": "PDIP-16 (N)",
     "note": "Identical 16-pin PDIP pinout and -40..+85 C rating, and TL594 tightens 5 V VREF to +/-1% (vs +/-5%), but TL594 adds a 3.5-6.9 V UVLO (6 V typ) whereas TL494 has NO UVLO — verify low-VCC startup rails before replacing.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/tl494-vs-tl594-vs-uc3525a-pwm-replacement/"
   },
   {
     "src": "TL594ID",
@@ -453,7 +453,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-16 (D)",
     "note": "Same pinout, but TL494IDR loosens 5 V VREF from +/-1% to +/-5% (4.75-5.25 V), removes integrated UVLO, and lowers ESD from 1000 V to 500 V HBM / 200 V CDM; use Active reel TL594IDR for obsolete TL594ID tubes.",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/tl494-vs-tl594-vs-uc3525a-pwm-replacement/"
   },
   {
     "src": "UC3525ADWTR",
@@ -465,7 +465,7 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-16 WB / PDIP-16",
     "note": "UC2527AN is Active in TI SLUS191D POA while UC3525A/UC2525A are NRND, but UCx527A has INVERTED (active-low) output logic vs non-inverted UCx525A — causes immediate gate-drive shoot-through; also different package (PDIP vs SOIC-16 WB).",
-    "doc": ""
+    "doc": "https://www.partvane.com/blog/tl494-vs-tl594-vs-uc3525a-pwm-replacement/"
   },
   {
     "src": "SN75LBC184D",
@@ -501,6 +501,78 @@ export const VERIFIED_CROSS_REFERENCES = [
     "verdict": "NOT Drop-In",
     "pkg": "SOIC-20 WB (DW)",
     "note": "Both are 20-pin SOIC WB power shift registers, but TPIC6595 (250 mA/ch, 1.3 Ohm RDS(on), 45 V, 75 mJ) is NOT pin-compatible or current-compatible with TPIC6B595 (150 mA/ch, 5 Ohm, 50 V); use Active 2000/reel TPIC6595DWR for obsolete DW tube.",
+    "doc": ""
+  },
+  {
+    "src": "DS90UB913QSQ/NOPB",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ds90ub913qsq-nopb/",
+    "alt": "DS90UB913ATRTVRQ1",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/blog/ds90ub913q-vs-ds90ub913a-ds90ub914q-fpd-link-iii-guide/",
+    "verdict": "Conditional Cross",
+    "pkg": "WQFN-32 (RTV, 5x5 mm)",
+    "note": "Same 32-WQFN RTV footprint and 10/12-bit FPD-Link III payload, and 913A-Q1 adds Power-over-Coax (PoC) + STP support, BUT DS90UB913Q locks from 10 MHz to 100 MHz PCLK whereas DS90UB913A-Q1 requires 25 MHz to 100 MHz PCLK (fails to lock on 10-24 MHz imagers!).",
+    "doc": "https://www.partvane.com/blog/ds90ub913q-vs-ds90ub913a-ds90ub914q-fpd-link-iii-guide/"
+  },
+  {
+    "src": "TMS320F28035PNQ",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/tms320f28035pnq/",
+    "alt": "TMS320F28035PNT",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/tms320f28035pnq/",
+    "verdict": "Conditional Cross",
+    "pkg": "LQFP-80 (PN, 12x12 mm)",
+    "note": "Identical LQFP-80 pinout, 60 MHz C28x+CLA core and 128 KB Flash (MSL 3), but PNQ is AEC-Q100 Grade 1 (-40 to +125 C) whereas PNT is non-automotive industrial (-40 to +105 C). Also watch RFQs written 'TMS320F28035PNTQ' conflating PNT and PNQ.",
+    "doc": ""
+  },
+  {
+    "src": "INA118P",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ina118p/",
+    "alt": "INA819IDR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "",
+    "verdict": "NOT Drop-In",
+    "pkg": "PDIP-8 vs SOIC-8 (Pin Swap)",
+    "note": "Per TI SBOS027C Table 5-1, INA118 (and its true SOIC-8 upgrade INA818IDR) connect gain resistor RG across Pins 1 & 8, whereas INA819 moves RG to Pins 2 & 3 and shifts VIN-/VIN+! Use INA118U/2K5 or INA818IDR (with SMD pads).",
+    "doc": ""
+  },
+  {
+    "src": "UCC2818DTR",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/ucc2818dtr/",
+    "alt": "UCC2817DTR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/ucc2818dtr/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-16 Narrow (D, 3.91 mm)",
+    "note": "Identical 16-pin narrow SOIC pinout and BiCMOS PFC architecture per TI SLUS395K, but UCC2818 turns on at 10.5 V UVLO (10 V off) whereas UCC2817 requires 16 V turn-on UVLO — substituting UCC2817 on a 12 V auxiliary rail prevents startup!",
+    "doc": ""
+  },
+  {
+    "src": "XTR115U",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/xtr115u/",
+    "alt": "XTR116UA/2K5",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/xtr115u/",
+    "verdict": "NOT Drop-In",
+    "pkg": "SOIC-8 (D)",
+    "note": "Identical SOIC-8 pinout, 100x loop gain, 5 V VREG and shared 'XTR' POA top mark per TI SBOS124C, but Pin 1 VREF outputs 2.500 V on XTR115 vs 4.096 V on XTR116 — breaks sensor bridge excitation & zero-offset resistor scaling! Use Active XTR115UA/2K5 instead.",
+    "doc": ""
+  },
+  {
+    "src": "SN75LBC180RSAT",
+    "srcMfr": "Texas Instruments",
+    "srcUrl": "https://www.partvane.com/parts/texas-instruments/sn75lbc180rsat/",
+    "alt": "SN65LBC180RSAR",
+    "altMfr": "Texas Instruments",
+    "altUrl": "https://www.partvane.com/parts/texas-instruments/sn75lbc180rsat/",
+    "verdict": "Pin-Compatible",
+    "pkg": "QFN-16 (RSA, 4x4 mm)",
+    "note": "Per TI SLLS174I POA (26-Mar-2026), commercial 0..70 C SN75LBC180RSAT (mark LB180) is Obsolete; industrial -40..+85 C SN65LBC180RSAR (3000/reel, mark BL180, MSL 2) is the pin-compatible wide-temperature full-duplex RS-485 upgrade.",
     "doc": ""
   }
 ];

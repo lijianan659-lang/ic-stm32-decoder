@@ -28,3 +28,8 @@ export {
   VERIFIED_CROSS_REFERENCES,
   lookupCrossReference,
 } from './cross-ref.js';
+
+export {
+  VERIFIED_PACKAGE_DIMENSIONS,
+  lookupPackageDimensions,
+} from './package-dim.js';

@@ -14,6 +14,7 @@ from .date_code import (
 )
 from .stm32 import decode_stm32
 from .cross_ref import lookup_cross_reference
+from .package_dim import lookup_package_dimensions
 from .top_marking import lookup_top_marking
 
 HELP_TEXT = """ic-stm32-decoder — Zero-dependency IC Date Code & STM32 Part Number Decoder
@@ -82,9 +83,9 @@ def _parse_args(argv: list[str]) -> dict[str, Any]:
             positional.append(arg)
         i += 1
 
-    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc", "marking", "crossref"):
+    if len(positional) >= 2 and positional[0].lower() in ("date", "stm32", "onsemi", "nsc", "marking", "crossref", "package"):
         opts["mode"] = positional[0].lower()
-        opts["target"] = " ".join(positional[1:]) if opts["mode"] == "marking" else "".join(positional[1:])
+        opts["target"] = " ".join(positional[1:]) if opts["mode"] in ("marking", "package") else "".join(positional[1:])
     elif len(positional) >= 1:
         opts["target"] = "".join(positional)
 
@@ -214,6 +215,18 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if opts["help"] else 1
 
     mode = _detect_mode(opts["target"]) if opts["mode"] == "auto" else opts["mode"]
+    if mode == "package":
+        out = lookup_package_dimensions(opts["target"])
+        if opts["json"]:
+            print(json.dumps(out, indent=2, ensure_ascii=False))
+        elif not out["ok"]:
+            print(f"Query: {out['query']}\nStatus: NO PACKAGE OUTLINE MATCH\nWeb Link: {out['shareUrl']}")
+        else:
+            print(f"Query: {out['query']}\nPackage Outlines: {out['count']}")
+            for m in out["matches"]:
+                print(f"  - {m['name']} [{m['standard']}] — Body: {m['body']}, Span: {m['leadSpan']}, Pitch: {m['pitch']}\n    Codes: {m['codes']}\n    Trap: {m['trap']}")
+            print(f"Web Link: {out['shareUrl']}")
+        return 0 if out["ok"] else 1
     if mode == "crossref":
         out = lookup_cross_reference(opts["target"])
         if opts["json"]:
