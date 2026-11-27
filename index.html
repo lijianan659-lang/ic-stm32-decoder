@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ic-stm32-decoder v1.5.0 — Open-Source IC Top Marking, Cross-Ref, Date Code &amp; STM32 Decoder</title>
-  <meta name="description" content="Zero-dependency JavaScript (ESM) and Python 3 toolkit for datasheet-verified IC top markings (180 SMD codes), cross-reference substitution traps (36 pairs), YYWW/Julian/onsemi/NSC date codes, and STM32 part numbers.">
+  <title>ic-stm32-decoder v1.6.0 — Open-Source IC Top Marking, Cross-Ref, Date Code &amp; STM32 Decoder</title>
+  <meta name="description" content="Zero-dependency JavaScript (ESM) and Python 3 toolkit for datasheet-verified IC top markings (194 SMD codes), cross-reference substitution traps (36 pairs), YYWW/Julian/onsemi/NSC date codes, and STM32 part numbers.">
   <link rel="canonical" href="https://lijianan659-lang.github.io/ic-stm32-decoder/">
   <style>
     :root {
@@ -114,16 +114,16 @@
 <body>
   <header>
     <div class="wrap">
-      <span class="badge">v1.5.0 MIT</span>
+      <span class="badge">v1.6.0 MIT</span>
       <span class="badge">0 Dependencies</span>
       <span class="badge">Node.js ESM + Python 3</span>
       <h1>ic-stm32-decoder — IC Top Marking, Cross-Ref, Date Code &amp; STM32 Toolkit</h1>
       <p class="lead">
-        Open-source incoming quality control (IQC) and hardware engineering library for decoding cryptic SMD package markings (180 datasheet-verified entries), IC cross-reference &amp; EOL substitution traps (36 pairs), parallel ISO week / Julian / onsemi / National Semiconductor lot codes, and STM32 ordering suffixes.
+        Open-source incoming quality control (IQC) and hardware engineering library for decoding cryptic SMD package markings (194 datasheet-verified entries), IC cross-reference &amp; EOL substitution traps (36 pairs), parallel ISO week / Julian / onsemi / National Semiconductor lot codes, and STM32 ordering suffixes.
       </p>
       <p style="margin:0;font-size:14px">
         <a href="https://github.com/lijianan659-lang/ic-stm32-decoder">GitHub Repository</a> &middot;
-        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder/releases/tag/v1.5.0">Release v1.5.0</a> &middot;
+        <a href="https://github.com/lijianan659-lang/ic-stm32-decoder/releases/tag/v1.6.0">Release v1.6.0</a> &middot;
         <a href="https://www.partvane.com/tools/">PartVane IC Engineering Tools Hub</a>
       </p>
     </div>
@@ -135,7 +135,7 @@
 
     <div class="grid3">
       <div class="card">
-        <h3>1. IC Top Marking Lookup (180 Codes)</h3>
+        <h3>1. IC Top Marking Lookup (194 Codes)</h3>
         <label for="in-mark">Package Top Marking or MPN</label>
         <input id="in-mark" value="1GI 2418" autocomplete="off" spellcheck="false">
         <div class="chips" data-target="in-mark">
@@ -150,7 +150,7 @@
       </div>
 
       <div class="card">
-        <h3>2. IC Cross-Ref &amp; EOL Trap Checker (36 Pairs)</h3>
+        <h3>2. IC Cross-Ref &amp; EOL Trap Checker (42 Pairs)</h3>
         <label for="in-cr">Source or Substitute MPN</label>
         <input id="in-cr" value="MCP2551-I/SN" autocomplete="off" spellcheck="false">
         <div class="chips" data-target="in-cr">
@@ -202,12 +202,12 @@
         <tr>
           <td><strong>IC Top Marking &amp; SMD Code Lookup</strong></td>
           <td><a href="https://www.partvane.com/tools/ic-marking-decoder/">partvane.com/tools/ic-marking-decoder/</a></td>
-          <td>180 datasheet-verified markings across TI, STMicroelectronics, onsemi, Microchip, Nexperia, Vishay &amp; Panasonic, flagging shared-marking substitution traps.</td>
+          <td>194 datasheet-verified markings across TI, STMicroelectronics, onsemi, Microchip, Nexperia, Vishay &amp; Panasonic, flagging shared-marking substitution traps.</td>
         </tr>
         <tr>
           <td><strong>IC Cross-Reference &amp; Drop-In Trap Checker</strong></td>
           <td><a href="https://www.partvane.com/tools/cross-reference/">partvane.com/tools/cross-reference/</a></td>
-          <td>36 datasheet-backed drop-in vs conditional crosses catching gain (8.0 vs 8.2), Reinforced vs Basic isolation (10 vs 6 kVPK), Pin-5 VREF/VIO and DAC reset traps.</td>
+          <td>42 datasheet-backed drop-in vs conditional crosses catching gain (8.0 vs 8.2), Reinforced vs Basic isolation (10 vs 6 kVPK), Pin-5 VREF/VIO and DAC reset traps.</td>
         </tr>
         <tr>
           <td><strong>IC Date Code Decoder</strong></td>
@@ -251,6 +251,7 @@ python3 -m ic_stm32_decoder onsemi GJ</code></pre>
 
     <h2>Related Datasheet Suffix &amp; Substitution Engineering Notes</h2>
     <ul style="color:var(--mu);font-size:14px">
+      <li><a href="https://www.partvane.com/blog/tl494-vs-tl594-vs-uc3525a-pwm-replacement/">TL494 vs TL594 &amp; UC3525A vs UC2527A PWM Replacement Guide</a> &mdash; 5% vs 1% VREF, UVLO threshold &amp; complementary output inversion traps.</li>
       <li><a href="https://www.partvane.com/obsolete/plcc-pdip-discontinued-industrial-ics/">Discontinued PLCC &amp; Through-Hole PDIP Industrial ICs</a> &mdash; package discontinuation &amp; shared-marking traps for <code>DAC7724NB</code>, <code>TLC2543IFN</code>, <code>MC33153PG</code>, <code>MC34152PG</code> &amp; <code>TPIC6B595N</code>.</li>
       <li><a href="https://www.partvane.com/blog/mcp2551-vs-mcp2561-vs-tcan1057a-can-replacement/">MCP2551 NRND Replacement Guide</a> &mdash; Pin 5 <code>VREF</code> vs <code>SPLIT</code> vs <code>VIO</code> traps across <code>MCP2561</code>, <code>MCP2562</code>, <code>TCAN1057A</code> &amp; Single-Wire CAN <code>NCV7356</code>.</li>
       <li><a href="https://www.partvane.com/blog/tlk110pt-nrnd-industrial-ethernet-lvds-sourcing/">TI Industrial NRND &amp; Obsolete Tube Guide</a> &mdash; <code>TLK110PT</code> EtherCAT PHY, <code>DS90CR286MTD/NOPB</code> CameraLink LVDS, <code>UC2846DWTR</code> &amp; <code>ISO7240CDW</code>.</li>
@@ -279,7 +280,7 @@ python3 -m ic_stm32_decoder onsemi GJ</code></pre>
       const r = lookupTopMarking(v);
       const box = document.getElementById('out-mark');
       if (!r.ok) {
-        box.innerHTML = `<span style="color:var(--warn)">No verified match in the 180-entry table.</span> Never guess an unknown SMD marking — check <a href="https://www.partvane.com/tools/ic-marking-decoder/">full lookup &amp; TI/onsemi guides</a>.`;
+        box.innerHTML = `<span style="color:var(--warn)">No verified match in the 194-entry table.</span> Never guess an unknown SMD marking — check <a href="https://www.partvane.com/tools/ic-marking-decoder/">full lookup &amp; TI/onsemi guides</a>.`;
         return;
       }
       const m = r.matches[0];
@@ -295,7 +296,7 @@ python3 -m ic_stm32_decoder onsemi GJ</code></pre>
       const r = lookupCrossReference(v);
       const box = document.getElementById('out-cr');
       if (!r.ok) {
-        box.innerHTML = `<span style="color:var(--warn)">Not in 36-pair table.</span> Check <a href="https://www.partvane.com/tools/cross-reference/">full Cross-Reference Checker</a>.`;
+        box.innerHTML = `<span style="color:var(--warn)">Not in 42-pair table.</span> Check <a href="https://www.partvane.com/tools/cross-reference/">full Cross-Reference Checker</a>.`;
         return;
       }
       const m = r.matches[0];

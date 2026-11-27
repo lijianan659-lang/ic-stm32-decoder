@@ -120,9 +120,9 @@ test('5-digit YYDDD Julian date handles leap years, century 1900 vs 2000, and re
   assert.equal(nonLeap.ok, false);
   assert.match(nonLeap.error, /Day 366 does not exist in non-leap year 2023/);
 
-  const day367 = decodeDateCode('24367', { century: 2000, referenceYear: 2026 });
-  assert.equal(day367.ok, false);
-  assert.match(day367.error, /outside the valid Julian day range/);
+  const day427 = decodeDateCode('24367', { century: 2000, referenceYear: 2026 });
+  assert.equal(day427.ok, false);
+  assert.match(day427.error, /outside the valid Julian day range/);
 
   // 2000 was a leap year, 1900 was not
   const y2k = decodeDateCode('00366', { century: 2000, referenceYear: 2026 });
@@ -296,7 +296,7 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
   assert.equal(ncv.ok, true);
   assert.equal(ncv.matches[0].mpn, 'NCV7446MW0R2G');
 
-  assert.equal(VERIFIED_TOP_MARKINGS.length, 180);
+  assert.equal(VERIFIED_TOP_MARKINGS.length, 194);
 
   const pd25751 = lookupTopMarking('25751D BG');
   assert.equal(pd25751.ok, true);
@@ -325,7 +325,7 @@ test('IC Top Marking lookup resolves cryptic SMD codes, wildcards, and companion
 });
 
 test('IC Cross-Reference lookup resolves drop-in vs NOT Drop-In substitution traps', () => {
-  assert.equal(VERIFIED_CROSS_REFERENCES.length, 36);
+  assert.equal(VERIFIED_CROSS_REFERENCES.length, 42);
   const mcp = lookupCrossReference('MCP2551-I/SN');
   assert.equal(mcp.ok, true);
   assert.equal(mcp.matches[0].alt, 'TCAN1057AVDRQ1');

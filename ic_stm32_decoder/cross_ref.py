@@ -423,6 +423,78 @@ VERIFIED_CROSS_REFERENCES: list[dict[str, Any]] = [{'src': 'AMC1200BDWVR',
   'note': 'Pin-compatible SOIC-16 PWM controller, but NRND UC2846DWTR is rated -40 to +85 C with '
           '+/-1% VREF, whereas Active UC3846DWTR is commercial 0 to +70 C (+/-2% VREF); never use '
           'Obsolete UC3847DW (inverted ACTIVE-LOW outputs).',
+  'doc': ''},
+ {'src': 'TL494IN',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/tl494in/',
+  'alt': 'TL594IN',
+  'altMfr': 'Texas Instruments',
+  'altUrl': 'https://www.partvane.com/parts/texas-instruments/tl594id/',
+  'verdict': 'Conditional Cross',
+  'pkg': 'PDIP-16 (N)',
+  'note': 'Identical 16-pin PDIP pinout and -40..+85 C rating, and TL594 tightens 5 V VREF to '
+          '+/-1% (vs +/-5%), but TL594 adds a 3.5-6.9 V UVLO (6 V typ) whereas TL494 has NO UVLO — '
+          'verify low-VCC startup rails before replacing.',
+  'doc': ''},
+ {'src': 'TL594ID',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/tl594id/',
+  'alt': 'TL494IDR',
+  'altMfr': 'Texas Instruments',
+  'altUrl': 'https://www.partvane.com/parts/texas-instruments/tl494in/',
+  'verdict': 'NOT Drop-In',
+  'pkg': 'SOIC-16 (D)',
+  'note': 'Same pinout, but TL494IDR loosens 5 V VREF from +/-1% to +/-5% (4.75-5.25 V), removes '
+          'integrated UVLO, and lowers ESD from 1000 V to 500 V HBM / 200 V CDM; use Active reel '
+          'TL594IDR for obsolete TL594ID tubes.',
+  'doc': ''},
+ {'src': 'UC3525ADWTR',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/uc3525adwtr/',
+  'alt': 'UC2527AN',
+  'altMfr': 'Texas Instruments',
+  'altUrl': '',
+  'verdict': 'NOT Drop-In',
+  'pkg': 'SOIC-16 WB / PDIP-16',
+  'note': 'UC2527AN is Active in TI SLUS191D POA while UC3525A/UC2525A are NRND, but UCx527A has '
+          'INVERTED (active-low) output logic vs non-inverted UCx525A — causes immediate '
+          'gate-drive shoot-through; also different package (PDIP vs SOIC-16 WB).',
+  'doc': ''},
+ {'src': 'SN75LBC184D',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/sn75lbc184d/',
+  'alt': 'SN65LBC184DR',
+  'altMfr': 'Texas Instruments',
+  'altUrl': 'https://www.partvane.com/parts/texas-instruments/sn75lbc184d/',
+  'verdict': 'Pin-Compatible',
+  'pkg': 'SOIC-8 (D)',
+  'note': 'Pin-compatible drop-in wide-temp upgrade: Active SN65LBC184DR (-40..+85 C, mark '
+          '6LB184/SLB18U) matches obsolete 0..+70 C SN75LBC184D (mark 7LB184) pinout, 250 kbps '
+          'slew control, 400 W surge TVS & +/-30 kV IEC ESD.',
+  'doc': ''},
+ {'src': 'SN65176BD',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/sn65176bd/',
+  'alt': 'SN75176BPSR',
+  'altMfr': 'Texas Instruments',
+  'altUrl': 'https://www.partvane.com/parts/texas-instruments/sn65176bd/',
+  'verdict': 'NOT Drop-In',
+  'pkg': 'SOIC-8 (3.91 mm) vs SO-8 (5.30 mm)',
+  'note': 'Two traps: SN75176BPSR (mark A176B) is wide 5.30 mm SO-8 PS (does not fit narrow 3.91 '
+          'mm SOIC-8 D pads) AND is rated only 0..+70 C vs -40..+105 C on SN65176BD; use Active '
+          '2500/reel SN65176BDR instead.',
+  'doc': ''},
+ {'src': 'TPIC6595DW',
+  'srcMfr': 'Texas Instruments',
+  'srcUrl': 'https://www.partvane.com/parts/texas-instruments/tpic6595dw/',
+  'alt': 'TPIC6B595DWR',
+  'altMfr': 'Texas Instruments',
+  'altUrl': 'https://www.partvane.com/parts/texas-instruments/tpic6b595n/',
+  'verdict': 'NOT Drop-In',
+  'pkg': 'SOIC-20 WB (DW)',
+  'note': 'Both are 20-pin SOIC WB power shift registers, but TPIC6595 (250 mA/ch, 1.3 Ohm '
+          'RDS(on), 45 V, 75 mJ) is NOT pin-compatible or current-compatible with TPIC6B595 (150 '
+          'mA/ch, 5 Ohm, 50 V); use Active 2000/reel TPIC6595DWR for obsolete DW tube.',
   'doc': ''}]
 
 

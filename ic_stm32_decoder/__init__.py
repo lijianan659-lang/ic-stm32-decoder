@@ -22,7 +22,7 @@ from .stm32 import (
 )
 from .top_marking import VERIFIED_TOP_MARKINGS, lookup_top_marking
 
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 
 __all__ = [
     "__version__",

@@ -83,8 +83,8 @@ class TestIcStm32Decoder(unittest.TestCase):
         non_leap = decode_date_code("23366", century=2000, reference_year=2026)
         self.assertFalse(non_leap["ok"])
 
-        day_367 = decode_date_code("24367", century=2000, reference_year=2026)
-        self.assertFalse(day_367["ok"])
+        day_427 = decode_date_code("24367", century=2000, reference_year=2026)
+        self.assertFalse(day_427["ok"])
 
         y2k = decode_date_code("00366", century=2000, reference_year=2026)
         self.assertTrue(y2k["ok"])
@@ -183,8 +183,8 @@ class TestIcStm32Decoder(unittest.TestCase):
             ["crossref", "MCP2551-I/SN", "--json"],
             ["crossref", "DAC7724NB", "--json"],
         ]
-        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 180)
-        self.assertEqual(len(VERIFIED_CROSS_REFERENCES), 36)
+        self.assertEqual(len(VERIFIED_TOP_MARKINGS), 194)
+        self.assertEqual(len(VERIFIED_CROSS_REFERENCES), 42)
         self.assertEqual(lookup_top_marking("25751D BG")["matches"][0]["mpn"], "TPS25751DREFR")
         self.assertEqual(lookup_top_marking("NV7344-3")["matches"][0]["mpn"], "NCV7344MW3R2G")
         self.assertEqual(lookup_top_marking("TPS 65217C")["matches"][0]["mpn"], "TPS65217CRSLR")
